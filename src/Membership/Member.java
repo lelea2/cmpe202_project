@@ -25,6 +25,22 @@ public abstract class Member {
         return _email;
     }
 
+    public void set_firstName(String _firstName) {
+        this._firstName = _firstName;
+    }
+
+    public void set_lastName(String _lastName) {
+        this._lastName = _lastName;
+    }
+
+    public void set_phoneNumber(String _phoneNumber) {
+        this._phoneNumber = _phoneNumber;
+    }
+
+    public void set_email(String _email) {
+        this._email = _email;
+    }
+
     abstract public void update(Object args) ;
 
 }
