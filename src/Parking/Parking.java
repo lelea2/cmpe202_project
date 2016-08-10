@@ -20,4 +20,8 @@ public class Parking {
         return slotNumber;
     }
 
+    public void pickSpot(int spotNumber) {
+        
+    }
+
 }

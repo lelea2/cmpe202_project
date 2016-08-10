@@ -3,5 +3,5 @@ package Vehicle;
 /**
  * Created by kdao on 7/22/16.
  */
-public class PersonalOwnedVehicle {
+public class PersonalOwnedVehicle extends VehicleOwnership {
 }
