@@ -1,5 +1,7 @@
 package Pricing;
 
+import Membership.Membership;
+
 /**
  * Created by kdao on 7/24/16.
  */
@@ -9,9 +11,9 @@ public class PricingContext {
     //int traffic_status;//0(good traffic),1(bad traffic),2(Rain day)
 
 
-    public double pricing(int traffic_status) {
+    public double processPricing(int traffic_status,Membership membership) {
         PricingStrategy pricingStrategy = setPricingStrategy(traffic_status);
-        return pricingStrategy.pricing();
+        return pricingStrategy.pricing(membership);
     }
 
     public PricingStrategy setPricingStrategy(int traffic_status) {
