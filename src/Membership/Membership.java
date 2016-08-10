@@ -3,7 +3,7 @@ package Membership;
 /**
  * Created by kdao on 7/25/16.
  */
-public abstract class Membership extends Member {
+public abstract class Membership extends Customer {
     protected String _loyaltyStatus;
     private int __rides;
     private long __totalMiles;
@@ -30,5 +30,7 @@ public abstract class Membership extends Member {
 
     public abstract void checkBenefits();
 
-    public void update(Object args) {}
+    public void update(Object args) {
+        System.out.println("Updating membership status");
+    }
 }

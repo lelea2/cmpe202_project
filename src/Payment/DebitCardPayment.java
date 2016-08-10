@@ -3,14 +3,14 @@ package Payment;
 import java.util.Scanner;
 
 /**
- * Created by kdao on 8/7/16.
+ * Created by kdao on 8/9/16.
  */
-public class CreditCardPayment extends Payment {
+public class DebitCardPayment extends Payment {
     private String _ccNumber;
     private String _ccExpiration;
     private String _ccSecurecode;
 
-    public CreditCardPayment(String payerName) {
+    public DebitCardPayment(String payerName) {
         _payerName = payerName ;
     }
 
