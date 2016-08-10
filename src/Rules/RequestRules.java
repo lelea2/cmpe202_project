@@ -6,7 +6,7 @@ import java.awt.*;
  * Created by kdao on 8/7/16.
  */
 public class RequestRules {
-    private Request __request;
+    /*private Request __request;
 
     public RequestRules(Request request) {
         this.__request = request;
@@ -41,5 +41,5 @@ public class RequestRules {
             return true;
         }
         return false;
-    }
+    }*/
 }

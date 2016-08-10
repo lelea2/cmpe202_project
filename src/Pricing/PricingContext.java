@@ -10,7 +10,7 @@ public class PricingContext {
 
     }
 
-    public float getPrice(Service _service) {
+    /*public float getPrice(Service _service) {
         float price ;
         _pricingStrategy = setPricingStrategy(_service) ;
         price = _pricingStrategy.getPrice(_service);
@@ -34,5 +34,5 @@ public class PricingContext {
             //Default PricingStrategy is Distance
             return new PriceByDistance() ;
         }
-    }
+    }*/
 }

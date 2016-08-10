@@ -29,4 +29,6 @@ public abstract class Membership extends Member {
     }
 
     public abstract void checkBenefits();
+
+    public void update(Object args) {}
 }

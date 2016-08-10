@@ -41,6 +41,6 @@ public abstract class Member {
         this._email = _email;
     }
 
-    abstract public void update(Object args) ;
+    abstract public void update(Object args);
 
 }

@@ -40,11 +40,11 @@ public class Request {
 
     public Schedule getService() { return this._schedule; }
 
-    public void cancelService() {
+    /*public void cancelService() {
         if (_schedule != null) {
             _schedule.cancelService();
         }
-    }
+    }*/
 
     public void setService(Schedule schedule) { this._schedule = schedule; }
 

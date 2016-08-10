@@ -15,7 +15,7 @@ import Payment.Payment;
  * Created by kdao on 8/7/16.
  */
 abstract public class Schedule {
-    protected Request _request ;
+    /*protected Request _request ;
     protected float _price ;
     protected Payment _payment ;
     protected LocalDateTime _startTime ;
@@ -191,5 +191,5 @@ abstract public class Schedule {
 
     public float getDistance() {
         return _distance;
-    }
+    }*/
 }
