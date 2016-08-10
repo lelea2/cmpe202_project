@@ -4,35 +4,27 @@ package Pricing;
  * Created by kdao on 7/24/16.
  */
 public class PricingContext {
-    protected PricingStrategy _pricingStrategy;
+    protected PricingStrategy pricingStrategy;
 
-    public PricingContext() {
+    //int traffic_status;//0(good traffic),1(bad traffic),2(Rain day)
 
+
+    public double pricing(int traffic_status) {
+        PricingStrategy pricingStrategy = setPricingStrategy(traffic_status);
+        return pricingStrategy.pricing();
     }
 
-    /*public float getPrice(Service _service) {
-        float price ;
-        _pricingStrategy = setPricingStrategy(_service) ;
-        price = _pricingStrategy.getPrice(_service);
-        return price ;
+    public PricingStrategy setPricingStrategy(int traffic_status) {
+
+        if((traffic_status == 0)){
+            pricingStrategy = new PricingByDistance();
+        }else if(traffic_status == 1){
+            pricingStrategy = new PricingByTime();
+        }else if(traffic_status == 2){
+            pricingStrategy = new PricingByWeather();
+        }
+
+        return pricingStrategy;
+
     }
-
-    public PricingStrategy setPricingStrategy(Service _service) {
-        String strategy = "Time" ;
-
-        if (_service.getDistanceInMiles() > _service.getTotalTimeInMinutes()/2) {
-            strategy = "Distance";
-        }
-
-        if (strategy.equals("Demand")) {
-            return new PriceByDemand() ;
-        } else if (strategy.equals("Time")) {
-            return new PriceByTime() ;
-        } else if (strategy.equals("Distance")) {
-            return new PriceByDistance() ;
-        } else {
-            //Default PricingStrategy is Distance
-            return new PriceByDistance() ;
-        }
-    }*/
 }
