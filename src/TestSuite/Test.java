@@ -3,6 +3,12 @@ package TestSuite;
 /**
  * Created by kdao on 8/9/16.
  */
+import Vehicle.*;
+import Membership.*;
+
+import java.awt.*;
+import java.time.LocalTime;
+import java.util.Random;
 import java.util.Scanner;
 
 class Test {
@@ -49,6 +55,28 @@ class Test {
                             break;
                         }
                     }
+                case 2: // Create Vehicle
+                {
+                    System.out.println("Is this company owned or driver owned car?");
+                    String type = input.next();
+                    System.out.println("What is the Vehicle Make?");
+                    String make = input.next();
+                    System.out.println("What is the Vehicle Model?");
+                    String model = input.next();
+
+                    VehicleOwnership ownership;
+
+                    if (type.equalsIgnoreCase("company")) {
+                        ownership = new CompanyOwnedVehicle();
+                    } else {
+                        ownership = new PersonalOwnedVehicle();
+                    }
+                    Random rand = new Random(LocalTime.now().toNanoOfDay());
+                    /*VehicleCar nV = new VehicleCar("vin#", make, model, ownership);
+                    nV.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
+                    vehicles.add(nV);*/
+                    break;
+                }
                 default: {
                     System.out.println("Not a valid choice, please choose again");
                     System.out.println("---------------------------------------------------");
