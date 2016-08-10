@@ -4,34 +4,33 @@ package Membership;
  * Created by kdao on 7/24/16.
  */
 public abstract class MembershipDecorator extends Membership {
-    protected Membership _decoratedCustomer;
+    protected Membership _membership;
 
-    public MembershipDecorator(Membership decoratedCustomer) {
-        _decoratedCustomer = decoratedCustomer;
-
+    public MembershipDecorator(Membership _membership) {
+        _membership = _membership;
     }
 
     public String get_name() {
-        return _decoratedCustomer.get_firstName() + " "  + _decoratedCustomer.get_lastName();
+        return _membership.get_firstName() + " "  + _membership.get_lastName();
     }
 
     public String get_phoneNumber() {
-        return _decoratedCustomer.get_phoneNumber();
+        return _membership.get_phoneNumber();
     }
     public int getRides() {
-        return _decoratedCustomer.getRides();
+        return _membership.getRides();
     }
     public long getTotalMiles() {
-        return _decoratedCustomer.getTotalMiles();
+        return _membership.getTotalMiles();
     }
     public void addRide() {
-        _decoratedCustomer.addRide();
+        _membership.addRide();
     }
     public void addMiles(long miles) {
-        _decoratedCustomer.addMiles(miles);
+        _membership.addMiles(miles);
     }
 
     public void checkBenefits() {
-        _decoratedCustomer.checkBenefits();
+        _membership.checkBenefits();
     }
 }

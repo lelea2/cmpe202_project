@@ -9,16 +9,17 @@ public class CashPayment extends Payment {
     }
 
     @Override
-    public void setupPayment(){
+    public void setupPayment() {
+        System.out.println("Driver has indicated cash payment method");
     }
 
     @Override
     public void processPayment() {
+        System.out.format("Customer %s paid cash in the amount of $%.2f for services\n", _payerName, _paymentAmount);
         _paymentSucceeded = true ;
     }
 
     @Override
     public void printReceipt() {
-
     }
 }

@@ -3,11 +3,11 @@ package Membership;
 /**
  * Created by kdao on 7/24/16.
  */
-public class GoldMembershipDecorator {
+public class GoldMembershipDecorator extends MembershipDecorator {
 
-    /*public GoldMembershipDecorator(Customer customer) {
-        super(customer);
-    }*/
+    public GoldMembershipDecorator(Membership membership) {
+        super(membership);
+    }
 
     public void checkBenefits() {
         showCondiments();
@@ -23,6 +23,6 @@ public class GoldMembershipDecorator {
     }
 
     public String toString() {
-        return "Silver";
+        return "Gold";
     }
 }
