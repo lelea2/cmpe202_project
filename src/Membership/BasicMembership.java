@@ -7,9 +7,8 @@ public class BasicMembership extends Membership {
     private int __rides;
     private long __totalMiles;
 
-    public BasicMembership(String firstName, String lastName, String phoneNumber) {
-        this._firstName = firstName;
-        this._lastName = lastName;
+    public BasicMembership(String name, String phoneNumber) {
+        this._name = name;
         this._phoneNumber = phoneNumber;
         this.__rides = 0;
         this.__totalMiles = 0;
