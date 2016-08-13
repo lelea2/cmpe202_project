@@ -61,7 +61,7 @@ public class Request {
         return _time;
     }
 
-    public String getRequetTime() {
+    public String getRequestTime() {
         if (_time != null) {
             return new DateFormat().getCurrentDate();
         } else {
