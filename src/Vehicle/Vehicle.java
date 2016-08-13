@@ -10,125 +10,140 @@ import GPS.GPS;
 /**
  * Created by kdao on 7/25/16.
  */
-public class Vehicle {
-    public VehicleOwnership vehicleOwnership;
-    protected String vehicleType;
-    protected int numberOfSeats;
-    private String vehicleId;
-    private String vinNumber;
-    private String vehicleMake;
-    private String vehicleModel;
-    private String vehicleYear;
-    private VehicleState __vehicleState;
-    private GPS vehicleGPS;
-    private ArrayList<Service> scheduledServices;
+abstract public class Vehicle {
+    public VehicleOwnership ownership;
+    protected String vehicleSize;
+    protected int seats;
+    private String id;
+    private String vin;
+    private String make;
+    private String model;
+    private int year;
+    private VehicleState state;
+    private GPS vehicleGPS; //find where vehicle is (tracking vehicle
 
-    public Vehicle(String vin, String make, String model, VehicleOwnership ownership) {
-        vehicleGPS 			= new GPS();
-        __vehicleState = new AvailableState(this);
-        vinNumber 			= vin;
-        vehicleMake 			= make;
-        vehicleModel			= model;
-        vehicleYear				= "2015";
-        vehicleOwnership	= ownership;
-        vehicleId 		= UUID.randomUUID().toString().replaceAll("-", "");
-        scheduledServices = new ArrayList<Service>();
+    public Vehicle(String vin, String make, String model, int year, VehicleOwnership ownership) {
+        this.vin = vin; //vehicle vin number
+        this.make = make; //vehicle make, Eg: Toyota
+        this.model = model; //Vehicle model, Eg: model
+        this.year = year; //Vehicle year, Eg: year
+        this.ownership = ownership; //Vehicle ownership
+        vehicleGPS = new GPS();
+        state = new VehicleAvailState(this);
+        id = UUID.randomUUID().toString();
     }
 
-    public void available() {
-        __vehicleState.available();
+    public boolean isAvailable() {
+        return state.isAvailable();
+    }
+    public boolean isScheduled() {
+        return state.isScheduled();
+    }
+    public boolean isOperating() {
+        return state.isOperating();
     }
 
-    public void scheduledForService() {
-        __vehicleState.scheduledForService();
+    /**
+     * Set vehicle state
+     * @param state
+     */
+    public void setVehicleState(VehicleState state) {
+        this.state = state;
     }
 
-    public void providingService() {
-        __vehicleState.providingService();
-    }
-
-    public void inactive() {
-        __vehicleState.inactive();
-    }
-
-    public void retired() {
-        __vehicleState.retired();
-    }
-
-    // Set vehicle state
-    public void setVehicleState(VehicleState s) {
-        __vehicleState = s;
-    }
-
-    // Get vehicle state
+    /**
+     * Get vehicle state
+     * @return
+     */
     public VehicleState getState() {
-        return __vehicleState;
+        return state;
     }
 
-    // Get vehicle current location
+    /**
+     * Track vehicle location
+     * @return
+     */
     public Point getLocation () {
         return vehicleGPS.getLocation();
     }
 
-    // Set vehicle location
+    /**
+     * Set vehicle location
+     * @param point
+     */
     public void setLocation(Point point) {
         vehicleGPS.setLocation(point);
     }
 
-    // Get methods for private attributes
-    public String getVehicleId() {
-        return vehicleId;
+    /**
+     * Get vehicle id
+     * @return
+     */
+    public String getId() {
+        return id;
     }
 
-    public String getVinNumber() {
-        return vinNumber;
+    /**
+     * Get vehicle VIN
+     * @return
+     */
+    public String getVin() {
+        return vin;
     }
 
-    public String getVehicleMake() {
-        return vehicleMake;
+    /**
+     * Get vehicle make
+     * @return
+     */
+    public String getMake() {
+        return make;
     }
 
-    public String getVehicleModel() {
-        return vehicleModel;
+    /**
+     * Get vehicle model
+     * @return
+     */
+    public String getModel() {
+        return model;
     }
 
-    public String getVehicleYear() {
-        return vehicleYear;
+    /**
+     * Get vehicle year
+     * @return
+     */
+    public int getYear() {
+        return year;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+    /**
+     * Get vehicle seats
+     * @return
+     */
+    public int getSeats() {
+        return seats;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    /**
+     * Get vehicle size
+     * @return
+     */
+    public String getVehicleSize() {
+        return vehicleSize;
     }
 
-    public void setVehicleType(String type) {
-        vehicleType = type;
+    /**
+     * Set vehicle size
+     * @param size
+     */
+    public void setVehicleSize(String size) {
+        vehicleSize = size;
     }
 
-    public VehicleOwnership getVehicleOwnership() {
-        return vehicleOwnership;
-    }
-
-    public void addScheduledService(Service s){
-        scheduledServices.add(s);
-    }
-    public java.util.List<Service> getScheduledService(){
-        return scheduledServices;
-    }
-
-    public boolean isFree(LocalDateTime t1){
-        for(Service s : scheduledServices){
-            LocalDateTime t2 = s.getRequest().getTime();
-
-            long hours = Duration.between(t1, t2).getSeconds() / 3600;
-
-            if (hours <= 1){
-                return false;
-            }
-        }
-        return true;
+    /**
+     * Get vehicle ownership
+     * @return
+     */
+    public VehicleOwnership getOwnership() {
+        return ownership;
     }
 }

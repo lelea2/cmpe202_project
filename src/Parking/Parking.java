@@ -47,8 +47,4 @@ public class Parking {
         }
     }
 
-    public void pickSpot(int spotNumber) {
-
-    }
-
 }
