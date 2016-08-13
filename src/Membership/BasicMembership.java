@@ -3,7 +3,7 @@ package Membership;
 /**
  * Created by kdao on 7/25/16.
  */
-public class BasicMembership extends Membership {
+public class BasicMembership extends Customer {
     private int __rides;
     private long __totalMiles;
 

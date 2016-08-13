@@ -1,5 +1,7 @@
 package Membership;
 
+import Schedule.Schedule;
+
 /**
  * Created by kdao on 7/22/16.
  */

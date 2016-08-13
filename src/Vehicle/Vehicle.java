@@ -4,8 +4,10 @@ import java.awt.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 import GPS.GPS;
+import Schedule.Schedule;
 
 /**
  * Created by kdao on 7/25/16.
@@ -21,6 +23,8 @@ abstract public class Vehicle {
     private int year;
     private VehicleState state;
     private GPS vehicleGPS; //find where vehicle is (tracking vehicle
+    private ArrayList<Schedule> schedulesList;
+    private int FREE_PERIOD_MIN = 2; //2 HOUR set between schedule free is set
 
     public Vehicle(String vin, String make, String model, int year, VehicleOwnership ownership) {
         this.vin = vin; //vehicle vin number
@@ -29,18 +33,45 @@ abstract public class Vehicle {
         this.year = year; //Vehicle year, Eg: year
         this.ownership = ownership; //Vehicle ownership
         vehicleGPS = new GPS();
-        state = new VehicleAvailState(this);
+        state = new VehicleFreeState(this);
         id = UUID.randomUUID().toString();
     }
 
-    public boolean isAvailable() {
-        return state.isAvailable();
+    /**********************************************************************************/
+    //Vehicle state
+    public void free() {
+        state.free();
     }
-    public boolean isScheduled() {
-        return state.isScheduled();
+    public void schedule() {
+        state.schedule();
     }
-    public boolean isOperating() {
-        return state.isOperating();
+    public void operate() {
+        state.operate();
+    }
+    public void finish() {
+        state.finish();
+    }
+    //Finish vehicle state
+    /*********************************************************************************/
+
+    //Function to add schedule for given vehicle
+    public void addSchedule(Schedule schedule){
+        schedulesList.add(schedule);
+    }
+    //Function return schedule list for current vehicle
+    public List<Schedule> getSchedulesList(){
+        return schedulesList;
+    }
+
+    public boolean isVehicleFree(LocalDateTime t1){
+        for(Schedule s : schedulesList){
+            LocalDateTime t2 = s.get_request().getTime();
+            long hours = Duration.between(t1, t2).getSeconds() / 3600;
+            if (hours <= FREE_PERIOD_MIN) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

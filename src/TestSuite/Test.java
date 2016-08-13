@@ -27,7 +27,6 @@ class Test {
                 case 1: //Register member in the system
                     String[] memberOptions = {"Create Customer", "Create Driver"};
                     int userChoice = getOption("User Menu", memberOptions);
-
                     switch (userChoice) {
                         case 1: // Create Customer
                         {
@@ -57,19 +56,19 @@ class Test {
                     }
                 case 2: // Create Vehicle
                 {
-                    System.out.println("Is this company owned or driver owned car?");
-                    String type = input.next();
+                    System.out.println("Enter 1 - personal owned, 2 - company owned");
+                    int owner_type = Integer.parseInt(input.next());
+                    System.out.println("Vehicle Type: 1 - Compact, 2- Van");
+                    int vehicle_type = Integer.parseInt(input.next());
                     System.out.println("What is the Vehicle Make?");
                     String make = input.next();
                     System.out.println("What is the Vehicle Model?");
                     String model = input.next();
-
                     VehicleOwnership ownership;
-
-                    if (type.equalsIgnoreCase("company")) {
-                        ownership = new CompanyOwnedVehicle();
+                    if (owner_type == 1) {
+                        ownership = new CompanyOwnedVehicle("company");
                     } else {
-                        ownership = new PersonalOwnedVehicle();
+                        ownership = new PersonalOwnedVehicle("personal");
                     }
                     Random rand = new Random(LocalTime.now().toNanoOfDay());
                     /*VehicleCar nV = new VehicleCar("vin#", make, model, ownership);

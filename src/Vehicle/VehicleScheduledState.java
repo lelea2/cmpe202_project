@@ -11,19 +11,21 @@ public class VehicleScheduledState implements VehicleState {
         _vehicle = vehicle;
     }
 
-    public boolean isAvailable() {
+    public void free() {
         System.out.println("This vehicle is not available for service.");
-        return false;
     }
 
-    public boolean isScheduled() {
+    public void schedule() {
         System.out.println("Vehicle is being scheduled for service.");
-        return true;
     }
 
-    public boolean isOperating() {
+    public void operate() {
         System.out.println("Vehicle starts operating.");
         _vehicle.setVehicleState(new VehicleOperatingState(_vehicle));
-        return false;
+    }
+
+    public void finish() {
+        System.out.println("Vehicle is set up to finish. Schedule state aborted");
+        _vehicle.setVehicleState(new VehicleFreeState(_vehicle));
     }
 }

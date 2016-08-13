@@ -16,7 +16,7 @@ import Schedule.Schedule;
  */
 public class Request {
     protected Member user;
-    protected Date time;
+    protected LocalDateTime time;
     protected String requestId;
     protected RequestState state;
     protected RequestRules requestRules;
@@ -32,10 +32,10 @@ public class Request {
         return this.user;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
     public String getReqTime() {

@@ -4,9 +4,11 @@ package Vehicle;
  * Created by kdao on 8/13/16.
  */
 public interface VehicleState {
-    boolean isAvailable();
+    void free();
 
-    boolean isScheduled();
+    void schedule();
 
-    boolean isOperating();
+    void operate();
+
+    void finish();
 }

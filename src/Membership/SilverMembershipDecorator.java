@@ -5,7 +5,7 @@ package Membership;
  */
 public class SilverMembershipDecorator extends MembershipDecorator {
 
-    public SilverMembershipDecorator(Membership membership) {
+    public SilverMembershipDecorator(Customer membership) {
         super(membership);
     }
 

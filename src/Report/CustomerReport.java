@@ -1,7 +1,7 @@
 package Report;
 
-import Membership.Customer;
 import java.util.*;
+import Membership.*;
 
 /**
  * Created by LeonZhang on 8/10/16.
