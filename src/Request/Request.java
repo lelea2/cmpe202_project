@@ -1,5 +1,6 @@
 package Request;
 
+import Base.DateFormat;
 import Rules.RequestRules;
 
 import java.awt.*;
@@ -62,9 +63,7 @@ public class Request {
 
     public String getRequetTime() {
         if (_time != null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = _time.format(formatter);
-            return formattedDateTime;
+            return new DateFormat().getCurrentDate();
         } else {
             return "Not started";
         }

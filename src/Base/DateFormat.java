@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class DateFormat {
 
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm-dd-yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public String getCurrentDate(){
         return simpleDateFormat.format(new Date());
