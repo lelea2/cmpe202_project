@@ -16,11 +16,11 @@ public class DispatchContext { //TODO: this could be strategy pattern, for simpl
     }
 
     public VehicleAndDriver dispatch(Request rq) {
-        List<VehicleAndDriver> cars = DataTest.getInstance().getActiveVehicleList();
+        List<VehicleAndDriver> cars = DataTest.getTest().getActiveVehicleList();
         for (VehicleAndDriver car : cars) {
             if (car.getVehicle().getState().toString().equalsIgnoreCase("available")) {
                 System.out.println("Car/Driver:" + car.getVehicle().getVin() + "/" + car.getDriver().get_name());
-                car.getVehicle().getState().isScheduled();
+                car.getVehicle().getState().schedule(); //Schedule for car
                 return car;
             }
         }
