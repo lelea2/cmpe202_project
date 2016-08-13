@@ -6,6 +6,7 @@ import Rules.RequestRules;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import Membership.Member;
 import Schedule.Schedule;
@@ -14,63 +15,87 @@ import Schedule.Schedule;
  * Created by kdao on 8/7/16.
  */
 public class Request {
-    protected Member _user;
-    protected LocalDateTime _time;
-    protected String _requestId;
-    protected RequestState _requestState;
-    protected RequestRules _requestRules;
-    protected Point _startLocation;
-    protected Point _endLocation;
-    protected Schedule _schedule;
+    protected Member user;
+    protected Date time;
+    protected String requestId;
+    protected RequestState state;
+    protected RequestRules requestRules;
+    protected Point startLocation;
+    protected Point endLocation;
+    protected Schedule schedule;
 
-    public void setState(RequestState state){
-        this._requestState = state;
-    }
-
-    public RequestState getRequestState() {
-        return this._requestState;
-    }
-
-    public String getRequestId(){
-        return this._requestId;
-    }
-
+    /**
+     * Get member of a request
+     * @return
+     */
     public Member getUser(){
-        return this._user;
+        return this.user;
     }
 
-    public Schedule getService() { return this._schedule; }
-
-    /*public void cancelService() {
-        if (_schedule != null) {
-            _schedule.cancelService();
-        }
-    }*/
-
-    public void setService(Schedule schedule) { this._schedule = schedule; }
-
-    public Point getStartPoint(){
-        return this._startLocation;
+    public Date getTime() {
+        return time;
     }
-
-    public Point getEndPoint(){
-        return this._endLocation;
+    public void setTime(Date time) {
+        this.time = time;
     }
-
-    public LocalDateTime getTime() {
-        return _time;
-    }
-
-    public String getRequestTime() {
-        if (_time != null) {
+    public String getReqTime() {
+        if (time != null) {
             return new DateFormat().getCurrentDate();
         } else {
             return "Not started";
         }
     }
 
-    public void setTime(LocalDateTime time) {
-        this._time = time;
+    /**
+     * Set request state
+     * @param state
+     */
+    public void setState(RequestState state){
+        this.state = state;
+    }
+
+    /**
+     * Get request state
+     * @return
+     */
+    public RequestState getState() {
+        return this.state;
+    }
+
+    /**
+     * Get request Id
+     * @return
+     */
+    public String getRequestId(){
+        return this.requestId;
+    }
+
+    /**
+     * Get request schedule
+     * @return
+     */
+    public Schedule schedule() { return this.schedule; }
+
+    /**
+     * Set request schedule
+     * @param schedule
+     */
+    public void setSchedule(Schedule schedule) { this.schedule = schedule; }
+
+    /**
+     * Get request starting point
+     * @return
+     */
+    public Point getStartPoint(){
+        return this.startLocation;
+    }
+
+    /**
+     * Get request ending point
+     * @return
+     */
+    public Point getEndPoint(){
+        return this.endLocation;
     }
 
 }
