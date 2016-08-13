@@ -3,35 +3,25 @@ package Request;
 /**
  * Created by YuexingYin on 8/12/16.
  */
-public class PendingState implements RequestState{
-    private RequestInterface requestInterface;
+public class PendingState implements RequestState {
+    private Request _request;
 
-    public PendingState(RequestInterface requestInterface){
-        this.requestInterface = requestInterface;
-    }
-    @Override
-    public void pending() {
-        requestInterface.setState(new PendingState(requestInterface));
-        System.out.println("Your request is pending !");
+    public PendingState(Request request) {
+        this._request = request;
     }
 
     @Override
-    public void inProgress() {
-        System.out.println("Your request is pending !");
+    public void stateAction() {
+        System.out.println("Request is pending");
+        goToNextState();
     }
 
     @Override
-    public void approved() {
-        System.out.println("Your request is pending !");
+    public void goToNextState() {
+        //Ask for state of scheduling, when request is pending to wait for approval
     }
 
-    @Override
-    public void completed() {
-        System.out.println("Your request is pending !");
-    }
-
-    @Override
-    public void cancelled() {
-        System.out.println("Your request is pending !");
+    public String stateDescription() {
+        return "Pending";
     }
 }

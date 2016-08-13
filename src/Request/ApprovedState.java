@@ -3,36 +3,26 @@ package Request;
 /**
  * Created by YuexingYin on 8/12/16.
  */
-public class ApprovedState implements RequestState{
+public class ApprovedState implements RequestState {
 
-    RequestInterface requestInterface;
+    private Request _request;
 
-    public ApprovedState(RequestInterface requestInterface){
-        this.requestInterface = requestInterface;
-    }
-    @Override
-    public void pending() {
-        System.out.println("Your request is approved!");
+    public ApprovedState(Request request) {
+        this._request = request;
+        stateAction();
     }
 
     @Override
-    public void inProgress() {
-        System.out.println("Your request is approved!");
+    public void stateAction() {
+        System.out.println("Request is Approved");
     }
 
     @Override
-    public void approved() {
-        requestInterface.setState(new ApprovedState(requestInterface));
-        System.out.println("Your request is approved!");
+    public void goToNextState() {
+        this._request.setState(new InProgressState(this._request));
     }
 
-    @Override
-    public void completed() {
-        System.out.println("Your request is approved!");
-    }
-
-    @Override
-    public void cancelled() {
-        System.out.println("Your request is approved!");
+    public String stateDescription() {
+        return "Approved";
     }
 }

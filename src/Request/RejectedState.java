@@ -1,27 +1,27 @@
 package Request;
 
 /**
- * Created by YuexingYin on 8/12/16.
+ * Created by kdao on 8/13/16.
  */
-public class CancelledState implements RequestState {
+public class RejectedState implements RequestState {
     private Request _request;
 
-    public CancelledState(Request request) {
+    public RejectedState(Request request) {
         this._request = request;
     }
 
     @Override
     public void stateAction() {
-        System.out.println("Request is cancelled");
+        System.out.println("Request is rejected");
         goToNextState();
     }
 
     @Override
     public void goToNextState() {
-        //Notify
+        //Notify for rejected state
     }
 
     public String stateDescription() {
-        return "cancelled";
+        return "Rejected";
     }
 }
