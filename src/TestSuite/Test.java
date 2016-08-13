@@ -3,16 +3,28 @@ package TestSuite;
 /**
  * Created by kdao on 8/9/16.
  */
+import Schedule.*;
 import Vehicle.*;
 import Membership.*;
+import Request.*;
 
 import java.awt.*;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 class Test {
     public static void main(String[] args) {
+        /**************************/
+        //Define temp data store for registration
+        ArrayList<Customer> customers = new ArrayList<>();
+        ArrayList<Driver> drivers = new ArrayList<>();
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        ArrayList<Request> requests = new ArrayList<>();
+        ArrayList<Schedule> schedules = new ArrayList<>();
+        //End definition for data store registration
+        /************************/
         Scanner input = new Scanner(System.in);
 
         System.out.println("/***********************************************************************************************/");
@@ -34,6 +46,7 @@ class Test {
                             String name = input.next();
                             System.out.println("Please type the Customer Phone Number");
                             String number = input.next();
+
                             break;
                         }
                         case 2: // Create Driver
@@ -46,6 +59,7 @@ class Test {
                             String license = input.next();
                             System.out.println("Please type the Driver Insurance Number");
                             String insurance = input.next();
+
                             break;
                         }
                         default: {
@@ -60,22 +74,43 @@ class Test {
                     int owner_type = Integer.parseInt(input.next());
                     System.out.println("Vehicle Type: 1 - Compact, 2- Van");
                     int vehicle_type = Integer.parseInt(input.next());
+                    System.out.println("Enter vin number");
+                    String vin = input.next();
                     System.out.println("What is the Vehicle Make?");
                     String make = input.next();
                     System.out.println("What is the Vehicle Model?");
                     String model = input.next();
+                    System.out.println("What year the Vehicle is made?");
+                    int year = Integer.parseInt(input.next());
                     VehicleOwnership ownership;
                     if (owner_type == 1) {
                         ownership = new CompanyOwnedVehicle("company");
                     } else {
                         ownership = new PersonalOwnedVehicle("personal");
                     }
-                    Random rand = new Random(LocalTime.now().toNanoOfDay());
-                    /*VehicleCar nV = new VehicleCar("vin#", make, model, ownership);
-                    nV.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
-                    vehicles.add(nV);*/
+                    Random rand = new Random();
+                    Vehicle v;
+                    if (vehicle_type == 1) { //Compact car
+                        v = new CompactVehicle(vin, make, model, year, ownership);
+                    } else { //Van car
+                        v = new VanVehicle(vin, make, model, year, ownership);
+                    }
+                    v.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
+                    vehicles.add(v);
                     break;
                 }
+                case 3: //Add request for a ride
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
                 default: {
                     System.out.println("Not a valid choice, please choose again");
                     System.out.println("---------------------------------------------------");
