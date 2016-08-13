@@ -18,9 +18,9 @@ class Test {
     public static void main(String[] args) {
         /**************************/
         //Define temp data store for registration
-        ArrayList<Customer> customers = new ArrayList<>();
-        ArrayList<Driver> drivers = new ArrayList<>();
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        ArrayList<Customer> customersList = new ArrayList<>();
+        ArrayList<Driver> driversList = new ArrayList<>();
+        ArrayList<Vehicle> vehiclesList = new ArrayList<>();
         ArrayList<Request> requests = new ArrayList<>();
         ArrayList<Schedule> schedules = new ArrayList<>();
         //End definition for data store registration
@@ -42,24 +42,46 @@ class Test {
                     switch (userChoice) {
                         case 1: // Create Customer
                         {
-                            System.out.println("Please type the Customer Name");
+                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as customer <<<<<<<<<<<<<<<<<<");
+                            System.out.println("Please enter Name:");
                             String name = input.next();
-                            System.out.println("Please type the Customer Phone Number");
-                            String number = input.next();
+                            System.out.println("Please enter Phone Number:");
+                            String phone = input.next();
+                            System.out.println("Please enter email:");
+                            String email = input.next();
+                            System.out.println("Choose membership: 1 - Basic, 2 - Silver, 3 - Gold:");
+                            int loyal_type = Integer.parseInt(input.next());
+                            Customer member = new BasicMembership(name, phone, email);
+                            if (loyal_type == 1) {
+                                customersList.add(member);
+                            } else if (loyal_type == 2) { //add silver membership
+                                member = new SilverMembershipDecorator(member);
+                                customersList.add(member);
+                            } else if (loyal_type == 3) {
+                                member = new GoldMembershipDecorator(member);
+                                customersList.add(member);
+                            } else {
+                                inValidateRequest();
+                                break;
+                            }
 
                             break;
                         }
                         case 2: // Create Driver
                         {
-                            System.out.println("Please type the Driver Name");
+                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as driver <<<<<<<<<<<<<<<<<<");
+                            System.out.println("Please enter Name:");
                             String name = input.next();
-                            System.out.println("Please type the Driver Phone Number");
-                            String number = input.next();
-                            System.out.println("Please type the Driver License Number");
+                            System.out.println("Please enter Phone Number:");
+                            String phone = input.next();
+                            System.out.println("Please enter email:");
+                            String email = input.next();
+                            System.out.println("Please enter license#:");
                             String license = input.next();
-                            System.out.println("Please type the Driver Insurance Number");
+                            System.out.println("Please enter insurance#:");
                             String insurance = input.next();
-
+                            Driver driver = new Driver(name, phone, email, license, insurance);
+                            driversList.add(driver);
                             break;
                         }
                         default: {
@@ -96,7 +118,7 @@ class Test {
                         v = new VanVehicle(vin, make, model, year, ownership);
                     }
                     v.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
-                    vehicles.add(v);
+                    vehiclesList.add(v);
                     break;
                 }
                 case 3: //Add request for a ride
@@ -112,8 +134,7 @@ class Test {
                 case 8:
                     break;
                 default: {
-                    System.out.println("Not a valid choice, please choose again");
-                    System.out.println("---------------------------------------------------");
+                    inValidateRequest();
                     break;
                 }
             }
@@ -129,5 +150,10 @@ class Test {
         Scanner input = new Scanner(System.in);
         int choice = Integer.parseInt(input.next());
         return choice;
+    }
+
+    private static void inValidateRequest() {
+        System.out.println("Not a valid choice, please choose again");
+        System.out.println("---------------------------------------------------");
     }
 }

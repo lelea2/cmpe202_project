@@ -5,8 +5,8 @@ package Membership;
  */
 public class SilverMembershipDecorator extends MembershipDecorator {
 
-    public SilverMembershipDecorator(Customer membership) {
-        super(membership);
+    public SilverMembershipDecorator(Customer customer) {
+        super(customer);
     }
 
     public void checkBenefits() {

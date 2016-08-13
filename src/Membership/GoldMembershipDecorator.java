@@ -5,11 +5,11 @@ package Membership;
  */
 public class GoldMembershipDecorator extends MembershipDecorator {
 
-    public GoldMembershipDecorator(Customer membership) {
-        super(membership);
+    public GoldMembershipDecorator(Customer customer) {
+        super(customer);
     }
 
-    public void checkBenefits() {
+    public void getBenefits() {
         showCondiments();
         showAmenities();
     }

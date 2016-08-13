@@ -28,7 +28,7 @@ public abstract class Customer extends Member {
         return this._mileages;
     }
 
-    public abstract void checkBenefits();
+    public abstract void getBenefits();
 
     //TODO: member become observer class to update status
     public void update(Object args) {

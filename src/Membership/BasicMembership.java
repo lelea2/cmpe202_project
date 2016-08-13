@@ -4,34 +4,43 @@ package Membership;
  * Created by kdao on 7/25/16.
  */
 public class BasicMembership extends Customer {
-    private int __rides;
-    private long __totalMiles;
+    private int _rides;
+    private long _mileages;
 
-    public BasicMembership(String name, String phoneNumber) {
+    public BasicMembership(String name, String phoneNumber, String email) {
         this._name = name;
         this._phoneNumber = phoneNumber;
-        this.__rides = 0;
-        this.__totalMiles = 0;
+        this._email = email;
+        this._rides = 0;
+        this._mileages = 0;
     }
 
+    /*******************************************************************/
+    //Handle members ride
     public void addRide() {
-        this.__rides += 1;
+        this._rides += 1;
     }
 
     public int getRides() {
-        return this.__rides;
+        return this._rides;
+    }
+    /*******************************************************************/
+
+
+    /*******************************************************************/
+    //Handle member mileages
+    public void addMileages(long miles) {
+        this._mileages += miles;
     }
 
-    public void addMiles(long miles) {
-        this.__totalMiles += miles;
+    public long getMileages() {
+        return this._mileages;
     }
+    /*******************************************************************/
 
-    public long getTotalMiles() {
-        return this.__totalMiles;
-    }
 
-    public void checkBenefits() {
-        System.out.println("No benefits");
+    public void getBenefits() {
+        System.out.println("Basic customer -- No extra perk!");
     }
 
 }
