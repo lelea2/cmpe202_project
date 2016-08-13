@@ -11,6 +11,6 @@ public class PricingByTime implements PricingStrategy{
     private final static double TIME = 20;
     @Override
     public double pricing(Membership membership) {
-        return TIME*PRICE_PER_MINUTE*PricingByMembership.getMemberPrice(membership);
+        return TIME * PRICE_PER_MINUTE * PricingByMembership.getMemberPrice(membership);
     }
 }
