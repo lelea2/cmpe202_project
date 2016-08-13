@@ -3,14 +3,9 @@ package Report;
 /**
  * Created by LeonZhang on 8/10/16.
  */
-public class ReservationReport extends MembershipReport {
-    public ReservationReport(String description){
-        this();
+public class ReservationReport extends Report {
+    public ReservationReport(String description) {
         _description = description;
-    }
-    public ReservationReport(){
-        this();
-        _title = "DriveeReport";
     }
 
     public void printReport() {

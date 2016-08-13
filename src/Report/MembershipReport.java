@@ -7,7 +7,7 @@ import java.util.concurrent.SynchronousQueue;
  * Created by kdao on 7/26/16.
  * modify by LeonZhang on 8/10/16.
  */
-public abstract class MembershipReport <T extends  Report>extends Report{
+public abstract class MembershipReport <T extends  Report>extends Report {
     protected ArrayList<T> reports;
 
     public  MembershipReport(ArrayList<T> v) {
@@ -28,7 +28,7 @@ public abstract class MembershipReport <T extends  Report>extends Report{
         }
     }
 
-    public void printRport(){
+    public void printReport(){
         System.out.println("");
         System.out.println(_description);
         System.out.println("---------------------------------------------------");
