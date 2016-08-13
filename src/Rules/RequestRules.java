@@ -33,7 +33,7 @@ public class RequestRules {
 
     public void checkCustomerBenefits() {
         if (_request.getUser() instanceof GoldMembershipDecorator || _request.getUser() instanceof SilverMembershipDecorator) {
-            ((MembershipDecorator) _request.getUser()).checkBenefits();
+            ((MembershipDecorator) _request.getUser()).getBenefits();
             System.out.println("------------------------------------------------------");
         }
     }
