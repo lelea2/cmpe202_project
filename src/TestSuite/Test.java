@@ -43,7 +43,7 @@ class Test {
                     switch (userChoice) {
                         case 1: // Create Customer
                         {
-                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as customer <<<<<<<<<<<<<<<<<<");
+                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as a customer <<<<<<<<<<<<<<<<<<");
                             System.out.println("Please enter Name:");
                             String name = input.next();
                             System.out.println("Please enter Phone Number:");
@@ -65,12 +65,11 @@ class Test {
                                 inValidateRequest();
                                 break;
                             }
-
                             break;
                         }
                         case 2: // Create Driver
                         {
-                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as driver <<<<<<<<<<<<<<<<<<");
+                            System.out.println(">>>>>>>>>>>>>>>>>>> Register as a driver <<<<<<<<<<<<<<<<<<");
                             System.out.println("Please enter Name:");
                             String name = input.next();
                             System.out.println("Please enter Phone Number:");
@@ -145,6 +144,11 @@ class Test {
                 }
             }
         }
+    }
+
+    //Helper function for membership payment registration
+    private static void payMembership() {
+
     }
 
     private static int getOption(String text, String[] options) {
