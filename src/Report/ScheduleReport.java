@@ -10,6 +10,7 @@ public class ScheduleReport extends Report {
 
     public ScheduleReport(Schedule s ) {
         schedule = s;
+        set_description("Schedule Report");
     }
 
     public Schedule getSchedule() {
@@ -25,14 +26,14 @@ public class ScheduleReport extends Report {
         float price = schedule.get_price();
         String state = schedule.get_scheduleState().toString();
 
-        System.out.println("---------------------------------------------------");
-        System.out.println("Trip Start time:  " + startTime.toString());
-        System.out.println("Trip End time:    " + finishTime.toString());
-        System.out.println("Trip Start Point: " + startPoint.x + "," + startPoint.y);
-        System.out.println("Trip End Point:   " + endPoint.x + "," + endPoint.y);
-        System.out.println("Trip Distance:    " + distance);
-        System.out.format("Trip Cost:        $%.2f\n",price);
-        System.out.println("Trip Status:      " + state);
-        System.out.println("---------------------------------------------------");
+        System.out.println("=====================================================================");
+        System.out.println("Start time:  " + startTime.toString());
+        System.out.println("End time:    " + finishTime.toString());
+        System.out.println("Start Point: " + startPoint.x + "," + startPoint.y);
+        System.out.println("End Point:   " + endPoint.x + "," + endPoint.y);
+        System.out.println("Distance:    " + distance);
+        System.out.format("Cost:        $%.2f\n",price);
+        System.out.println("Status:      " + state);
+        System.out.println("=====================================================================");
     }
 }

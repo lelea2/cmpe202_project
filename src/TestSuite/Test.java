@@ -7,6 +7,7 @@ import Schedule.*;
 import Vehicle.*;
 import Membership.*;
 import Request.*;
+import Report.*;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -119,6 +120,11 @@ class Test {
                     }
                     v.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
                     vehiclesList.add(v);
+                    //Printing Vehicle Report
+                    for (Vehicle vehicle : vehiclesList) {
+                        Report report = new VehicleReport(vehicle);
+                        report.printReport();
+                    }
                     break;
                 }
                 case 3: //Add request for a ride

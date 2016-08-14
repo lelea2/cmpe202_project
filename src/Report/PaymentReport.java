@@ -1,15 +1,15 @@
 package Report;
 
+import Payment.*;
+
 /**
  * Created by LeonZhang on 8/10/16.
  */
 public class PaymentReport extends Report {
-    public PaymentReport(String description){
-        _description = description;
-    }
-
-    public PaymentReport(){
-        _title = "Title";
+    private Payment payment;
+    public PaymentReport(Payment payment){
+        this.payment = payment;
+        set_description("Payment Report");
     }
 
     public void printReport(){

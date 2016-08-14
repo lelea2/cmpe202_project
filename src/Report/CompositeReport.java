@@ -28,7 +28,6 @@ public class CompositeReport<T extends Report> extends Report {
     }
 
     public void printReport() {
-        System.out.println("");
         System.out.println(_description);
         System.out.println("---------------------------------------------------");
         for (int index = 0; index < reports.size(); ++index) {
@@ -36,6 +35,5 @@ public class CompositeReport<T extends Report> extends Report {
             reports.get(index).printReport();
             System.out.println("---------------------------------------------------");
         }
-        System.out.println("");
     }
 }
