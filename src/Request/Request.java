@@ -89,7 +89,7 @@ public class Request {
      * Get request schedule
      * @return
      */
-    public Schedule schedule() { return this.schedule; }
+    public Schedule getSchedule() { return this.schedule; }
 
     /**
      * Set request schedule

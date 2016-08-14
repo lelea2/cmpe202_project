@@ -21,7 +21,7 @@ public class InProgressState implements RequestState {
         this._request.setState(new CompletedState(this._request));
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "Processing";
     }
 }

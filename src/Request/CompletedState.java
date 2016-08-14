@@ -21,7 +21,7 @@ public class CompletedState implements RequestState {
         //Notify, proceed payment
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "Completed";
     }
 }

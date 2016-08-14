@@ -21,7 +21,7 @@ public class PendingState implements RequestState {
         //Ask for state of scheduling, when request is pending to wait for approval
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "Pending";
     }
 }

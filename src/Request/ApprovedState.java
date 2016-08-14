@@ -22,7 +22,7 @@ public class ApprovedState implements RequestState {
         this._request.setState(new InProgressState(this._request));
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "Approved";
     }
 }

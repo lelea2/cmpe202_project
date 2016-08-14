@@ -21,7 +21,7 @@ public class CancelledState implements RequestState {
         //Notify
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "cancelled";
     }
 }

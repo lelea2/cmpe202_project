@@ -6,5 +6,5 @@ package Request;
 public interface RequestState {
     void stateAction();
     void goToNextState();
-    String stateDescription();
+    String getDescription();
 }

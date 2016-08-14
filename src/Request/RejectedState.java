@@ -21,7 +21,7 @@ public class RejectedState implements RequestState {
         //Notify for rejected state
     }
 
-    public String stateDescription() {
+    public String getDescription() {
         return "Rejected";
     }
 }
