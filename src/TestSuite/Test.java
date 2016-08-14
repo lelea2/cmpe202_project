@@ -22,8 +22,8 @@ class Test {
         ArrayList<Customer> customersList = new ArrayList<>();
         ArrayList<Driver> driversList = new ArrayList<>();
         ArrayList<Vehicle> vehiclesList = new ArrayList<>();
-        ArrayList<Request> requests = new ArrayList<>();
-        ArrayList<Schedule> schedules = new ArrayList<>();
+        ArrayList<Request> requestsList = new ArrayList<>();
+        ArrayList<Schedule> schedulesList = new ArrayList<>();
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
@@ -127,6 +127,24 @@ class Test {
                     break;
                 }
                 case 3: //Add request for a ride
+                    if (customersList.size() == 0 || driversList.size() == 0) {
+                        System.out.println("The system do not have any existing customer or driver. Create customer and driver first!");
+                        break;
+                    }
+                    String[] userList = new String[customersList.size()];
+                    for (int i = 0; i < customersList.size(); i++) {
+                        userList[i] = customersList.get(i).get_name();
+                    }
+                    int memberIndex = getOption("Which Customer will make this request?", userList);
+                    memberIndex--;
+                    System.out.println("What is your X coordinate");
+                    int fromX = input.nextInt();
+                    System.out.println("What is your Y coordinate");
+                    int fromY = input.nextInt();
+                    System.out.println("What is your destination X coordinate");
+                    int toX = input.nextInt();
+                    System.out.println("What is your destination Y coordinate");
+                    int toY = input.nextInt();
                     break;
                 case 4:
                     break;

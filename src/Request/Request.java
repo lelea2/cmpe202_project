@@ -4,6 +4,7 @@ import Base.DateFormat;
 import Rules.RequestRules;
 
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -23,6 +24,20 @@ public class Request {
     protected Point startLocation;
     protected Point endLocation;
     protected Schedule schedule;
+
+    //Constructor set up for request
+    //Note: Eg: could extend this to online/phone request
+    public Request(Member member, Point startLocation, Point endLocation ) {
+        this.user = member;
+        this.startLocation = startLocation;
+        this.endLocation = endLocation;
+        this.requestRules = new RequestRules(this);
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+        dateFormat.format(date);
+        this.time = LocalDateTime.now();
+        this.setState(new PendingState(this));
+    }
 
     /**
      * Get member of a request
