@@ -52,7 +52,7 @@ public class Multiple_Request_Test {
     }
 
     public static void printSchedules() {
-        SchedulesReport schedulesReport = new SchedulesReport(ScheduleQueue.getQueue().getScheduleReportsList());
-        schedulesReport.printReport();
+        //SchedulesReport schedulesReport = new SchedulesReport(ScheduleQueue.getQueue().getScheduleReportsList());
+        //schedulesReport.printReport();
     }
 }

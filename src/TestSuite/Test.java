@@ -66,6 +66,7 @@ class Test {
                                 break;
                             }
                             //Printing Customer Report
+                            System.out.println(">>>>>>>>>>>>>>>>> Print customer report <<<<<<<<<<<<<<<<<<<<<<");
                             for (Customer c : customersList) {
                                 Report report = new CustomerReport(c);
                                 report.printReport();
@@ -88,6 +89,7 @@ class Test {
                             Driver driver = new Driver(name, phone, email, license, insurance);
                             driversList.add(driver);
                             //Printing Driver Report
+                            System.out.println(">>>>>>>>>>>>>>>>> Print driver report <<<<<<<<<<<<<<<<<<<<<<");
                             for (Driver d : driversList) {
                                 Report report = new DriverReport(d);
                                 report.printReport();
@@ -100,6 +102,7 @@ class Test {
                             break;
                         }
                     }
+                    break; //End case 1
                 case 2: // Create Vehicle
                 {
                     System.out.println("Enter 1 - personal owned, 2 - company owned");
@@ -130,13 +133,15 @@ class Test {
                     v.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
                     vehiclesList.add(v);
                     //Printing Vehicle Report
+                    System.out.println(">>>>>>>>>>>>>>>>> Print vehicle report <<<<<<<<<<<<<<<<<<<<<<");
                     for (Vehicle vehicle : vehiclesList) {
                         Report report = new VehicleReport(vehicle);
                         report.printReport();
                     }
-                    break;
+                    break; //End case 2
                 }
                 case 3: //Add request for a ride
+                {
                     if (customersList.size() == 0 || driversList.size() == 0) {
                         System.out.println("The system do not have any existing customer or driver. Create customer and driver first!");
                         break;
@@ -157,23 +162,55 @@ class Test {
                     Request request = new Request(customersList.get(memberIndex - 1), new Point(fromX, fromY), new Point(toX, toY));
                     requestsList.add(request);
                     //Printing Request Report
+                    System.out.println(">>>>>>>>>>>>>>>>> Print request report <<<<<<<<<<<<<<<<<<<<<<");
                     for (Request req : requestsList) {
                         Report report = new RequestReport(req);
                         report.printReport();
                     }
-                    break;
+                    break; //End case 3
+                }
                 case 4: //Process request queue
+                {
                     break;
+                }
                 case 5: //Start a ride
+                {
                     break;
+                }
                 case 6: //Finish a ride
+                {
                     break;
+                }
                 case 7: //Cancel a ride
+                {
                     break;
+                }
                 case 8: //Add Feedback
+                {
                     break;
+                }
                 case 9: //Delete user
-                    break;
+                {
+                    if (customersList != null && customersList.size() > 0){
+                        System.out.println("Enter name of user to delete");
+                        String name = input.next();
+                        boolean deleted = false;
+                        for (int i=0; i <customersList.size(); i++){
+                            if (customersList.get(i).get_name().equalsIgnoreCase(name)){
+                                System.out.println("Customer with name=" + name + " is deleted.");
+                                customersList.remove(i);
+                                deleted = true;
+                                break;
+                            }
+                        }
+                        if (!deleted){
+                            System.out.println("Customer with name=" + name + " is not found.");
+                        }
+                    } else {
+                        System.out.println("Systems have no customer to delete!");
+                    }
+                    break; //End case 9
+                }
                 default: {
                     inValidateRequest();
                     break;
