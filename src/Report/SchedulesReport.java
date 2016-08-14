@@ -1,14 +1,15 @@
 package Report;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by kdao on 8/13/16.
  */
-public class SchedulesReport extends CompositeReport<ScheduleReport> {
+public class SchedulesReport extends ServiceCompositeReport<ScheduleReport> {
 
-    public SchedulesReport(ArrayList<ScheduleReport> v) {
-        super(v);
+    public SchedulesReport(Vector<ScheduleReport> reports) {
+        super(reports);
+        set_description("Schedules Report");
     }
 
 }

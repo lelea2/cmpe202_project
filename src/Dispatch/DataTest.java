@@ -55,13 +55,13 @@ public class DataTest {
 
     public void loadObjectsForTesting(int objCount) {
         Random rand = new Random(LocalTime.now().toNanoOfDay());
+        System.out.println("Loading drivers/vehicles assets...");
         for (int i = 0; i < objCount; i++) {
             VehicleAndDriver vd = new VehicleAndDriver();
             vd.setDriver(new Driver("driver#" + i, "phone#", "email@", "lic#", "insur#"));
             CompactVehicle c = new CompactVehicle("vin#" + i, "make-x", "model-x", 2016, new PersonalOwnedVehicle("driver#" + i));
             c.setLocation(new Point(rand.nextInt(100), rand.nextInt(100)));
             vd.setVehicle(c);
-
             DataTest.getTest().addVehicleAndDriver(vd);
             reportAddDriverOwnedInventory(vd);
         }

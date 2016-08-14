@@ -1,4 +1,4 @@
-package Feeback;
+package Feedback;
 
 /**
  * Created by YuexingYin on 8/9/16.

@@ -23,6 +23,7 @@ public class RequestReport extends Report {
         System.out.println("Start Point: " + request.getStartPoint().x + "," + request.getStartPoint().y);
         System.out.println("End Point:   " + request.getEndPoint().x + "," + request.getEndPoint().y);
         System.out.println("Time:        " + request.getReqTime());
+        System.out.println("=====================================================================");
 
 //        if (request.getUser() != null) {
 //            if (request.getUser() instanceof Driver) {

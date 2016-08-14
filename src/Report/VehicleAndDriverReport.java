@@ -14,6 +14,19 @@ public class VehicleAndDriverReport extends Report {
 
     @Override
     public void printReport() {
-
+        if (data.getDriver() != null) {
+            VehicleReport vehicleReport = new VehicleReport(data.getVehicle());
+            vehicleReport.printReport();
+        }
+        if (data.getDriver() != null) {
+            DriverReport driverReport = new DriverReport(data.getDriver());
+            driverReport.printReport();
+        }
+        if (data.getVehicle().getState().toString().equalsIgnoreCase("available")) {
+            System.out.println("Availability:      Free");
+        }
+        else {
+            System.out.println("Availability:      Not free\n");
+        }
     }
 }

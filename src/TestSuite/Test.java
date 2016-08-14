@@ -65,6 +65,11 @@ class Test {
                                 inValidateRequest();
                                 break;
                             }
+                            //Printing Customer Report
+                            for (Customer c : customersList) {
+                                Report report = new CustomerReport(c);
+                                report.printReport();
+                            }
                             break;
                         }
                         case 2: // Create Driver
@@ -82,6 +87,11 @@ class Test {
                             String insurance = input.next();
                             Driver driver = new Driver(name, phone, email, license, insurance);
                             driversList.add(driver);
+                            //Printing Driver Report
+                            for (Driver d : driversList) {
+                                Report report = new DriverReport(d);
+                                report.printReport();
+                            }
                             break;
                         }
                         default: {
