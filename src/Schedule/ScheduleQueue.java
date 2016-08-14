@@ -37,6 +37,10 @@ public class ScheduleQueue {
         return scheduleQueue;
     }
 
+    /**
+     * Helper function to add schedule in queue
+     * @param schedule
+     */
     public void addSchedule(Schedule schedule) {
         LocalDateTime now = LocalDateTime.now(); //java8 date time
         LocalDateTime reqTime = schedule.get_request().getTime();
@@ -71,6 +75,10 @@ public class ScheduleQueue {
         }
     }
 
+    /**
+     * Helper function to remove schedule
+     * @param s
+     */
     public void removeSchedule(Schedule s) {
         _scheduleQueue.remove(s);
     }
@@ -91,6 +99,22 @@ public class ScheduleQueue {
                 break;
             }
         }
+    }
+
+    /**
+     * Helper function to get next schedule in queue
+     * @return
+     */
+    public Schedule getNextSchedule() {
+        return _scheduleQueue.getFirst();
+    }
+
+    /**
+     * Helper function to get schedule report list
+     * @return
+     */
+    public ArrayList<ScheduleReport> getScheduleReportsList() {
+        return scheduleReportsList;
     }
 
 }
