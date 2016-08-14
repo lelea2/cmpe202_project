@@ -32,7 +32,7 @@ public class ScheduleReport extends Report {
         System.out.println("Start Point: " + startPoint.x + "," + startPoint.y);
         System.out.println("End Point:   " + endPoint.x + "," + endPoint.y);
         System.out.println("Distance:    " + distance);
-        System.out.format("Cost:        $%.2f\n",price);
+        System.out.format(" Cost:        $%.2f\n",price);
         System.out.println("Status:      " + state);
         System.out.println("=====================================================================");
     }

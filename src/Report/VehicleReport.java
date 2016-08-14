@@ -30,7 +30,7 @@ public class VehicleReport extends Report {
         System.out.println("Seats#  : " + vehicle.getSeats());
         System.out.println("Owner   : " + vehicle.getOwnership().getOwnerName());
         System.out.println("Location: " + vehicle.getLocation().x + ", " + vehicle.getLocation().y);
-        System.out.println("=====================================================================");
+        System.out.println("=====================================================================\n");
     }
 
 }
