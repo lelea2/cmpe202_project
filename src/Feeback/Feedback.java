@@ -11,7 +11,7 @@ public abstract class Feedback {
     private String content, name;
     private int rating;
 
-    public Feedback(String content, String name, int rating){
+    public Feedback(String content, String name, int rating) {
         this.content = content;
         this.name = name;
         this.rating = rating;

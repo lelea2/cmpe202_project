@@ -33,7 +33,7 @@ class Test {
         System.out.println("/***********************************************************************************************/");
         System.out.println();
         String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue",
-                "Start a ride", "Finish a ride", "Add feedback", "Delete User"};
+                "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User"};
         while(true) {
             int choice = getOption("==== Please pick one of the following option for testing ====", mainOptions);
             switch(choice) {
@@ -136,25 +136,33 @@ class Test {
                         userList[i] = customersList.get(i).get_name();
                     }
                     int memberIndex = getOption("Which Customer will make this request?", userList);
-                    memberIndex--;
-                    System.out.println("What is your X coordinate");
+                    System.out.println("Start point - X coordinate:");
                     int fromX = input.nextInt();
-                    System.out.println("What is your Y coordinate");
+                    System.out.println("Start point - Y coordinate:");
                     int fromY = input.nextInt();
-                    System.out.println("What is your destination X coordinate");
+                    System.out.println("Destination point - X coordinate:");
                     int toX = input.nextInt();
-                    System.out.println("What is your destination Y coordinate");
+                    System.out.println("Destination point - Y coordinate:");
                     int toY = input.nextInt();
+                    Request request = new Request(customersList.get(memberIndex - 1), new Point(fromX, fromY), new Point(toX, toY));
+                    requestsList.add(request);
+                    //Printing Request Report
+                    for (Request req : requestsList) {
+                        Report report = new RequestReport(req);
+                        report.printReport();
+                    }
                     break;
-                case 4:
+                case 4: //Process request queue
                     break;
-                case 5:
+                case 5: //Start a ride
                     break;
-                case 6:
+                case 6: //Finish a ride
                     break;
-                case 7:
+                case 7: //Cancel a ride
                     break;
-                case 8:
+                case 8: //Add Feedback
+                    break;
+                case 9: //Delete user
                     break;
                 default: {
                     inValidateRequest();
@@ -166,6 +174,7 @@ class Test {
 
     //Helper function for membership payment registration
     private static void payMembership() {
+        System.out.println("------- Loyalty Program: Register payment method ----------");
 
     }
 

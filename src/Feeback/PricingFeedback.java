@@ -3,7 +3,7 @@ package Feeback;
 /**
  * Created by YuexingYin on 8/9/16.
  */
-public class PricingFeedback extends Feedback{
+public class PricingFeedback extends Feedback {
     public PricingFeedback(String content, String name, int rating) {
         super(content, name, rating);
     }
