@@ -17,7 +17,7 @@ import Vehicle.VehicleScheduledState;
  * Created by kdao on 8/13/16.
  */
 public class ScheduleQueue {
-    private static ScheduleQueue queue = null;
+    private static ScheduleQueue scheduleQueue = null;
     protected ArrayDeque<Schedule> _scheduleQueue;
     protected ArrayList<ScheduleReport> scheduleReportsList;
     protected DispatchContext _dispatcher;
@@ -31,10 +31,10 @@ public class ScheduleQueue {
     }
 
     public static synchronized ScheduleQueue getQueue() {
-        if (queue == null) {
-            queue = new ScheduleQueue();
+        if (scheduleQueue == null) {
+            scheduleQueue = new ScheduleQueue();
         }
-        return queue;
+        return scheduleQueue;
     }
 
     public void addSchedule(Schedule schedule) {
