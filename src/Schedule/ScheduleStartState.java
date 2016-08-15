@@ -27,7 +27,7 @@ public class ScheduleStartState implements ScheduleState {
     public void complete() { //Complete state of a start process
         Random r = new Random();
         _schedule.setDistance();
-        long d = _schedule.getDistanceInMiles();
+        long d = _schedule.getDistance();
         _schedule._finishTime = LocalDateTime.now().plusMinutes(d * r.nextInt(4) + 1);
         _schedule.set_scheduleState(new ScheduleCompleteState(_schedule)); //Complete trip
         _schedule.paySchedule();
@@ -40,5 +40,9 @@ public class ScheduleStartState implements ScheduleState {
     public void cancel() {
         System.out.println("Cancel current schedule. Stop all process!!");
         //TODO: calculate how much time has travelled to charge
+    }
+
+    public String getState() {
+        return "Start";
     }
 }

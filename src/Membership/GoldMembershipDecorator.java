@@ -9,20 +9,7 @@ public class GoldMembershipDecorator extends MembershipDecorator {
         super(customer);
     }
 
-    public void getBenefits() {
-        showCondiments();
-        showAmenities();
-    }
-
-    public void showCondiments() {
-        System.out.println("Condiments: Peanuts and Soda");
-    }
-
-    public void showAmenities() {
-        System.out.println("Amenities: Pillow");
-    }
-
-    public String toString() {
-        return "Gold";
+    public String getBenefits() {
+        return "*** Gold Member ***: Get $20 giftcard with every $200 spent";
     }
 }

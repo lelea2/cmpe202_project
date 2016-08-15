@@ -16,12 +16,12 @@ import Membership.*;
 public class DataTest {
     private static DataTest test = null;
     private static ArrayList<VehicleAndDriver> availVehicles = null;
-    //private static ArrayList<Vehicle> inoperateVehicles = null;
+    private static ArrayList<Vehicle> inoperateVehicles = null;
     private static ArrayList<VehicleAndDriverReport> reportList;
 
     private DataTest() {
         availVehicles = new ArrayList<VehicleAndDriver>();
-        //inoperateVehicles = new ArrayList<Vehicle>();
+        inoperateVehicles = new ArrayList<Vehicle>();
         reportList = new ArrayList<VehicleAndDriverReport>();
     }
 
@@ -36,9 +36,9 @@ public class DataTest {
         return availVehicles;
     }
 
-//    public List<Vehicle> getCompanyVehicleList() {
-//        return companyVehicles;
-//    }
+    public List<Vehicle> getInoperateVehicleList() {
+        return inoperateVehicles;
+    }
 
     public ArrayList<VehicleAndDriverReport> getReportList() {
         return reportList;
@@ -53,10 +53,10 @@ public class DataTest {
         return null;
     }
 
-    public void loadObjectsForTesting(int objCount) {
+    public void loadMockData(int numTest) {
         Random rand = new Random(LocalTime.now().toNanoOfDay());
         System.out.println("Loading drivers/vehicles assets...");
-        for (int i = 0; i < objCount; i++) {
+        for (int i = 0; i < numTest; i++) {
             VehicleAndDriver vd = new VehicleAndDriver();
             vd.setDriver(new Driver("driver#" + i, "phone#", "email@", "lic#", "insur#"));
             CompactVehicle c = new CompactVehicle("vin#" + i, "make-x", "model-x", 2016, new PersonalOwnedVehicle("driver#" + i));
@@ -65,14 +65,13 @@ public class DataTest {
             DataTest.getTest().addVehicleAndDriver(vd);
             reportAddDriverOwnedInventory(vd);
         }
-        for (int i = 0; i < objCount; i++) {
+        for (int j = 0; j < numTest; j++) {
             VehicleAndDriver vd = new VehicleAndDriver();
-            vd.setDriver(new Driver("CompanyDriver-" + i, "phone#", "email@", "lic#", "insur#"));
-            Vehicle v = new CompactVehicle("company#" + i, "make-x", "model-x", 2016, new CompanyOwnedVehicle("company#" + i));
+            vd.setDriver(new Driver("Company#" + j, "phone#", "email@", "lic#", "insur#"));
+            Vehicle v = new CompactVehicle("company#" + j, "make-x", "model-x", 2015, new CompanyOwnedVehicle("company#" + j));
             v.setLocation(new Point(50, 50));// right in the middle
             vd.setVehicle(v);
             DataTest.getTest().addVehicleAndDriver(vd);
-            //DataTest.getTest().addVehicleAndDriver(v);
             reportAddCompanyOwnedInventory(vd);
         }
     }
@@ -81,9 +80,9 @@ public class DataTest {
         availVehicles.add(vd);
     }
 
-//    public synchronized void addVehicle(Vehicle v) {
-//        companyVehicles.add(v);
-//    }
+    public synchronized void addVehicle(Vehicle v) {
+        inoperateVehicles.add(v);
+    }
 
     public void reportAddDriverOwnedInventory(VehicleAndDriver vd) {
         VehicleAndDriverReport vehicleAndDriverReport = new VehicleAndDriverReport(vd);

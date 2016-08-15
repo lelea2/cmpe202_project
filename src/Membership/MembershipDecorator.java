@@ -55,8 +55,7 @@ public abstract class MembershipDecorator extends Customer {
     }
     /*******************************************************************/
 
-
-    public void getBenefits() {
-        _customer.getBenefits();
+    public String getBenefits() {
+        return _customer.getBenefits();
     }
 }

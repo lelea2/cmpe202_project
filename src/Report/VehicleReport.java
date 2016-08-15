@@ -26,7 +26,7 @@ public class VehicleReport extends Report {
         System.out.println("Make    : " + vehicle.getMake());
         System.out.println("Model   : " + vehicle.getModel());
         System.out.println("Year    : " + vehicle.getYear());
-        System.out.println("Size    : "      + vehicle.getVehicleSize());
+        System.out.println("Size    : " + vehicle.getVehicleSize());
         System.out.println("Seats#  : " + vehicle.getSeats());
         System.out.println("Owner   : " + vehicle.getOwnership().getOwnerName());
         System.out.println("Location: " + vehicle.getLocation().x + ", " + vehicle.getLocation().y);

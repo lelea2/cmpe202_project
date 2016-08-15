@@ -1,5 +1,6 @@
 package Report;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Vector;
  */
 public class FeedbacksReport extends ServiceCompositeReport<ScheduleReport> {
 
-    public FeedbacksReport(Vector<ScheduleReport> reports) {
+    public FeedbacksReport(ArrayList<ScheduleReport> reports) {
         super(reports);
         set_description("Feedbacks Report");
     }

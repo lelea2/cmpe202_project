@@ -6,9 +6,9 @@ import java.util.*;
  * Created by kdao on 8/14/16.
  */
 public abstract class ServiceCompositeReport<T extends Report> extends Report {
-    protected Vector<T> reports;
+    protected ArrayList<T> reports;
 
-    public ServiceCompositeReport(Vector<T> reports) {
+    public ServiceCompositeReport(ArrayList<T> reports) {
         this.reports = reports;
     }
 

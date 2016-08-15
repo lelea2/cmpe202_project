@@ -21,4 +21,8 @@ public class ScheduleCompleteState implements ScheduleState {
     public void complete() {}
     public void pay() {}
     public void cancel() {}
+
+    public String getState() {
+        return "Complete";
+    }
 }

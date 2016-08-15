@@ -32,10 +32,9 @@ public class Request {
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.requestRules = new RequestRules(this);
-        Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-        dateFormat.format(date);
-        this.time = LocalDateTime.now();
+        dateFormat.format(new Date());
+        this.time = LocalDateTime.now(); //Time stamp for request staarting
         this.setState(new PendingState(this));
     }
 

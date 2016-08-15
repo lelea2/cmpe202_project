@@ -6,6 +6,8 @@ import Schedule.*;
 import Membership.*;
 import Vehicle.*;
 import Dispatch.*;
+import javafx.scene.Scene;
+
 import java.awt.*;
 
 /**
@@ -14,7 +16,7 @@ import java.awt.*;
 //Helper test to generate multiple requests at the same time
 public class Multiple_Request_Test {
     public static void main(String[] args) {
-        DataTest.getTest().loadObjectsForTesting(12);
+        DataTest.getTest().loadMockData(12);
         Request req1 = new Request(new BasicMembership("Khanh", "123456789", "test@test.com"),
                 new Point(1, 2), new Point(2, 3));
         Request req2 = new Request(new BasicMembership("Leon", "123456789", "test@test.com"),
@@ -52,7 +54,8 @@ public class Multiple_Request_Test {
     }
 
     public static void printSchedules() {
-        //SchedulesReport schedulesReport = new SchedulesReport(ScheduleQueue.getQueue().getScheduleReportsList());
-        //schedulesReport.printReport();
+        System.out.println("Printing schedules list...");
+        SchedulesReport schedulesReport = new SchedulesReport(ScheduleQueue.getQueue().getScheduleReportsList());
+        schedulesReport.printReport();
     }
 }

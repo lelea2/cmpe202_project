@@ -42,7 +42,11 @@ public class SchedulePayState implements ScheduleState {
     public void updateCustomer() {
         if (!(_schedule.get_request().getUser() instanceof Driver)){
             ((Customer) _schedule.get_request().getUser()).addRide();
-            ((Customer) _schedule.get_request().getUser()).addMileages(_schedule.getDistanceInMiles());
+            ((Customer) _schedule.get_request().getUser()).addMileages(_schedule.getDistance());
         }
+    }
+
+    public String getState() {
+        return "Pay";
     }
 }

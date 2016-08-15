@@ -29,4 +29,8 @@ public class ScheduleCancelState implements ScheduleState {
     public void cancel() {
         System.out.println("Cancelling...");
     }
+
+    public String getState() {
+        return "Cancel";
+    }
 }

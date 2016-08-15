@@ -39,8 +39,8 @@ public class BasicMembership extends Customer {
     /*******************************************************************/
 
 
-    public void getBenefits() {
-        System.out.println("Basic customer -- No extra perk!");
+    public String getBenefits() {
+        return "Basic customer -- No extra perk!";
     }
 
 }

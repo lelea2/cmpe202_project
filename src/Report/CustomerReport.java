@@ -21,6 +21,7 @@ public class CustomerReport extends Report {
         System.out.println("Phone#        : " + customer.get_phoneNumber());
         System.out.println("Total Rides   : " + customer.get_rides());
         System.out.println("Total Mileages: " + customer.get_mileages());
+        System.out.println("Benefit       : " + customer.getBenefits());
         System.out.println("=====================================================================");
     }
 }

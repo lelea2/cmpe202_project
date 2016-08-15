@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class SchedulesReport extends ServiceCompositeReport<ScheduleReport> {
 
-    public SchedulesReport(Vector<ScheduleReport> reports) {
+    public SchedulesReport(ArrayList<ScheduleReport> reports) {
         super(reports);
         set_description("Schedules Report");
     }

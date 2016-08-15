@@ -43,8 +43,13 @@ public class ScheduleQueue {
      */
     public void addSchedule(Schedule schedule) {
         LocalDateTime now = LocalDateTime.now(); //java8 date time
-        LocalDateTime reqTime = schedule.get_request().getTime();
-
+        LocalDateTime reqTime = null;
+        try {
+            reqTime = schedule.get_request().getTime();
+        } catch(Exception ex) {
+            System.out.println(schedule.get_request());
+            System.out.println(ex);
+        }
         long reservation = Duration.between(now, reqTime).getSeconds();
 
         if(schedule.get_request().getUser() instanceof Driver) {

@@ -41,14 +41,8 @@ abstract public class Schedule {
         _endPoint = _request.getEndPoint();
     }
 
-    abstract public void setDistance();
-
-    abstract public long getDistanceInMiles();
-
-    abstract public long getTotalTimeInMinutes();
-
-    abstract public float getBidPricePerMile();
-
+    /*****************************************************************************/
+    //Helper function to add current schedule to queue
     public void addToQueue() {
         _scheduleQueue.addSchedule(this);
     }
@@ -142,4 +136,13 @@ abstract public class Schedule {
     public void cancelSchedule() {
         _scheduleState.cancel();
     }
+
+    //abstract class
+    abstract public void set_startPoint(Point p);
+    abstract public void set_endPoint(Point p);
+    abstract public void setDistance();
+    abstract public long getDistance();
+    abstract public long getTotalTime();
+    abstract public float getPrice();
+
 }

@@ -32,4 +32,8 @@ public class ScheduleQueuingState implements ScheduleState {
         System.out.println("Cancel schedule, remove from queue");
         _schedule.removeFromQueue();
     }
+
+    public String getState() {
+        return "Queue";
+    }
 }

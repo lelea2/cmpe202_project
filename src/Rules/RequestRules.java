@@ -21,9 +21,11 @@ public class RequestRules {
      */
     public void checkRules() {
         if(requestExceedTravelRange()) {
+            System.out.println("Request exceeds travel time, Reject!");
             this._request.setState(new RejectedState(this._request)); //notify for rejected state
         } else {
-            this._request.setState(new ApprovedState(this._request)); //validating request and approve it
+            System.out.println("Request is valid. Approve request");
+            this._request.setState(new SchedulingState(this._request)); //validating request and schedule it
         }
     }
 

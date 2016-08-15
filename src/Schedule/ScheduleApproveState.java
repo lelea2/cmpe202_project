@@ -36,4 +36,8 @@ public class ScheduleApproveState implements ScheduleState {
     public void cancel() {
         System.out.println("Cancel current schedule. Stop all process!!");
     }
+
+    public String getState() {
+        return "Approve";
+    }
 }

@@ -9,20 +9,7 @@ public class SilverMembershipDecorator extends MembershipDecorator {
         super(customer);
     }
 
-    public void checkBenefits() {
-        showCondiments();
-        showAmenities();
-    }
-
-    public void showCondiments() {
-        System.out.println("Condiments: Peanuts and Soda");
-    }
-
-    public void showAmenities() {
-        System.out.println("Amenities: Pillow");
-    }
-
-    public String toString() {
-        return "Silver";
+    public String checkBenefits() {
+        return "*** Silver Member ***: Get $10 giftcard with every $200 spent";
     }
 }
