@@ -19,6 +19,8 @@ public class PendingState implements RequestState {
     @Override
     public void goToNextState() {
         //Ask for state of scheduling, when request is pending to wait for approval
+        System.out.println("Validating request...");
+        this._request.requestRules.checkRules();
     }
 
     public String getDescription() {

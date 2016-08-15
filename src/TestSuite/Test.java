@@ -171,7 +171,13 @@ class Test {
                 }
                 case 4: //Process request queue
                 {
-                    break;
+                    System.out.println(">>>>> Processing request into schedule list <<<<<<");
+                    for (Request r : requestsList) {
+                        if (r.getSchedule() != null) { //Adding request to schedule
+                            schedulesList.add(r.getSchedule());
+                        }
+                    }
+                    break; //End case 4
                 }
                 case 5: //Start a ride
                 {
