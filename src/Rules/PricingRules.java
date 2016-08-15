@@ -5,6 +5,7 @@ import Pricing.PricingStrategy;
 /**
  * Created by kdao on 8/7/16.
  */
+//Set rules for pricing travel
 public class PricingRules implements Rules{
     protected float _pricingPerMile;
     protected float _pricingPerMinute;
