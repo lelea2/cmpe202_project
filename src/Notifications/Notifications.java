@@ -6,9 +6,7 @@ package Notifications;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import Membership.*;
-
 
 public class Notifications {
 
@@ -26,21 +24,20 @@ public class Notifications {
         this._id = count.incrementAndGet();
     }
 
-    public void AddObserver(Membership.Member observer){
+    public void addObserver(Member observer) {
         if (this.observerList == null){
-            this.observerList = new LinkedList<Membership.Member>();
+            this.observerList = new LinkedList<Member>();
         }
         this.observerList.add(observer);
     }
 
-    public boolean RemoveObserver(Membership.Member observer){
+    public boolean removeObserver(Member observer) {
         return this.observerList != null && this.observerList.remove(observer);
     }
 
-    public void SetNotificationType(int type){
-        if (type >= 0 && type < 3){
+    public void setNotificationType(int type) {
+        if (type >= 0 && type < 3) {
             this._notificationType = type;
-
             this._notificationUpdateDate = new Date();
             Calendar c = Calendar.getInstance();
             c.setTime(this._notificationUpdateDate);
@@ -49,9 +46,8 @@ public class Notifications {
         }
     }
 
-    public void SetNotificationContent(String content){
+    public void setNotificationContent(String content) {
         this._notificationContent = content;
-
         this._notificationUpdateDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(this._notificationUpdateDate);
@@ -59,7 +55,7 @@ public class Notifications {
         this._notificationExpDate = c.getTime();
     }
 
-    public void SetNotificationTitle(String title){
+    public void setNotificationTitle(String title) {
         this._notificationTitle = title;
 
         this._notificationUpdateDate = new Date();
@@ -69,36 +65,35 @@ public class Notifications {
         this._notificationExpDate = c.getTime();
     }
 
-    public int GetNotificationType(){
+    public int getNotificationType(){
         return this._notificationType;
     }
 
-    public String GetNotificationTitle(){
+    public String getNotificationTitle(){
         return this._notificationTitle;
     }
 
-    public String GetNotificationContent(){
+    public String getNotificationContent(){
         return this._notificationContent;
     }
 
-    public Date GetNotificationCreateDate(){
+    public Date getNotificationCreateDate(){
         return this._notificationCreateDate;
     }
 
-    public Date GetNotificationUpdateDate(){
+    public Date getNotificationUpdateDate(){
         return this._notificationUpdateDate;
     }
 
-    public boolean IsExpired(){
+    public boolean isExpired(){
         return !this._notificationExpDate.after(new Date());
     }
 
-    public void SendNotification(){
-        for (Membership.Member observer: this.observerList){
+    public void sendNotification() {
+        for (Member observer: this.observerList) {
             observer.update(this);
         }
     }
-
 
     //////////////////////////
     // Private Members
