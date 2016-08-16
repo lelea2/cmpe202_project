@@ -3,6 +3,7 @@ package TestSuite;
 /**
  * Created by kdao on 8/9/16.
  */
+import Payment.*;
 import Schedule.*;
 import Vehicle.*;
 import Membership.*;
@@ -25,6 +26,7 @@ class Test {
         ArrayList<Vehicle> vehiclesList = new ArrayList<>();
         ArrayList<Request> requestsList = new ArrayList<>();
         ArrayList<Schedule> schedulesList = new ArrayList<>();
+        ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>;
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
@@ -32,7 +34,6 @@ class Test {
         System.out.println("/***********************************************************************************************/");
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
-        System.out.println();
         String[] mainOptions = {"Register member in the system", "Create Vehicle", "Loading data", "Add ride request", "Process request queue",
                 "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User"};
         while(true) {
@@ -58,9 +59,13 @@ class Test {
                                 customersList.add(member);
                             } else if (loyal_type == 2) { //add silver membership
                                 member = new SilverMembershipDecorator(member);
+                                CreditCardPayment creditCardPayment = payMembership(name);
+                                paymentAndCustomers.add(new PaymentAndCustomer(creditCardPayment, member));
                                 customersList.add(member);
                             } else if (loyal_type == 3) {
                                 member = new GoldMembershipDecorator(member);
+                                CreditCardPayment creditCardPayment = payMembership(name);
+                                paymentAndCustomers.add(new PaymentAndCustomer(creditCardPayment, member));
                                 customersList.add(member);
                             } else {
                                 inValidateRequest();
@@ -98,8 +103,7 @@ class Test {
                             break;
                         }
                         default: {
-                            System.out.println("Not a valid choice, please choose again");
-                            System.out.println("---------------------------------------------------");
+                            inValidateRequest();
                             break;
                         }
                     }
@@ -265,9 +269,11 @@ class Test {
     }
 
     //Helper function for membership payment registration
-    private static void payMembership() {
+    private static CreditCardPayment payMembership(String name) {
         System.out.println("------- Loyalty Program: Register payment method ----------");
-
+        CreditCardPayment creditPayment = new CreditCardPayment(name);
+        creditPayment.setupPayment();
+        return creditPayment;
     }
 
     private static int getOption(String text, String[] options) {

@@ -17,9 +17,13 @@ public class CreditCardPayment extends Payment {
     @Override
     public void setupPayment() {
         Scanner scan = new Scanner(System.in);
+        System.out.println("Card number:");
         _ccNumber = scan.next();
+        System.out.println("Card exp (MM/YY):");
         _ccExpiration = scan.next();
+        System.out.println("Card secure code:");
         _ccSecurecode = scan.next();
+        System.out.println("Card information validated. Beginning Transaction...");
     }
 
     @Override
