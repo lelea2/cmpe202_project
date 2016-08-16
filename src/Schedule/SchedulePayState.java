@@ -2,16 +2,19 @@ package Schedule;
 
 import Membership.*;
 import Vehicle.*;
+import Parking.*;
 
 /**
  * Created by kdao on 8/13/16.
  */
 public class SchedulePayState implements ScheduleState {
     private Schedule _schedule;
+    private Parking parking = new Parking(10);
 
     public SchedulePayState(Schedule s){
         System.out.println("Schedule in paid state.");
         _schedule = s;
+        findParkingSpot();
         freeVehicle(); //free vehicle state
         updateCustomer();
     }
@@ -34,6 +37,11 @@ public class SchedulePayState implements ScheduleState {
     }
     public void cancel() {
         System.out.println("Cannot complete schedule that already paid");
+    }
+
+    //Function to find parking spot
+    public void findParkingSpot() {
+
     }
 
     //Function to free up vehicle

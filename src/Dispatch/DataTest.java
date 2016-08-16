@@ -63,7 +63,7 @@ public class DataTest {
             c.setLocation(new Point(rand.nextInt(100), rand.nextInt(100)));
             vd.setVehicle(c);
             DataTest.getTest().addVehicleAndDriver(vd);
-            reportAddDriverOwnedInventory(vd);
+            printAddPersonalOwnedInventory(vd);
         }
         for (int j = 0; j < numTest; j++) {
             VehicleAndDriver vd = new VehicleAndDriver();
@@ -72,7 +72,7 @@ public class DataTest {
             v.setLocation(new Point(50, 50));// right in the middle
             vd.setVehicle(v);
             DataTest.getTest().addVehicleAndDriver(vd);
-            reportAddCompanyOwnedInventory(vd);
+            printAddCompanyOwnedInventory(vd);
         }
     }
 
@@ -84,14 +84,14 @@ public class DataTest {
         inoperateVehicles.add(v);
     }
 
-    public void reportAddDriverOwnedInventory(VehicleAndDriver vd) {
+    public void printAddPersonalOwnedInventory(VehicleAndDriver vd) {
         VehicleAndDriverReport vehicleAndDriverReport = new VehicleAndDriverReport(vd);
         System.out.println("Add driver owned inventory:");
         reportList.add(vehicleAndDriverReport);
         vehicleAndDriverReport.printReport();
     }
 
-    public void reportAddCompanyOwnedInventory(VehicleAndDriver vd) {
+    public void printAddCompanyOwnedInventory(VehicleAndDriver vd) {
         VehicleAndDriverReport vehicleAndDriverReport = new VehicleAndDriverReport(vd);
         System.out.println("Add company owned inventory:");
         reportList.add(vehicleAndDriverReport);

@@ -8,11 +8,9 @@ import java.util.ArrayList;
  */
 
 public class Parking {
-
     private int totalSlotNumber;
     private int availableSlotNumber;
     private boolean[] parkingSlots;
-
 
     public Parking(int totalSlotNumber) {
         this.totalSlotNumber = totalSlotNumber;

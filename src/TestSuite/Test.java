@@ -8,6 +8,7 @@ import Vehicle.*;
 import Membership.*;
 import Request.*;
 import Report.*;
+import Dispatch.*;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -32,7 +33,7 @@ class Test {
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
         System.out.println();
-        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue",
+        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Loading data", "Add ride request", "Process request queue",
                 "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User"};
         while(true) {
             int choice = getOption("==== Please pick one of the following option for testing ====", mainOptions);
@@ -140,7 +141,43 @@ class Test {
                     }
                     break; //End case 2
                 }
-                case 3: //Add request for a ride
+                case 3: //Loading mock data, need this if you want to generate multiple request
+                {
+                    System.out.print(">>>>>>>>>>>>>>> Loading mock data <<<<<<<<<<<<<<<<");
+                    if (vehiclesList.size() == 0 && driversList.size() == 0) {
+                        System.out.println("No Vehicles & Drive. Auto-generate data? (Y/N)");
+                        String genAnswer = input.next();
+                        if (genAnswer.equalsIgnoreCase("y")) {
+                            System.out.println("How many vehicle you want?");
+                            int num = input.nextInt();
+                            DataTest.getTest().loadMockData(num);
+                        } else {
+                            System.out.println("... Return to main menu");
+                        }
+                        break;
+                    } else {
+                        int size = 0;
+                        if (vehiclesList.size() < driversList.size()) {
+                            size = vehiclesList.size();
+                        } else {
+                            size = driversList.size();
+                        }
+                        for (int i = 0; i < size; i++) {
+                            VehicleAndDriver vd = new VehicleAndDriver();
+                            vd.setDriver(driversList.get(i));
+                            vd.setVehicle(vehiclesList.get(i));
+                            DataTest.getTest().addVehicleAndDriver(vd);
+                            if (vd.getVehicle().getOwnership().getOwnerName().equalsIgnoreCase("company")) {
+                                DataTest.getTest().addVehicle(vd.getVehicle());
+                                DataTest.getTest().printAddCompanyOwnedInventory(vd);
+                            } else {
+                                DataTest.getTest().printAddPersonalOwnedInventory(vd);
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 4: //Add request for a ride
                 {
                     if (customersList.size() == 0 || driversList.size() == 0) {
                         System.out.println("The system do not have any existing customer or driver. Create customer and driver first!");
@@ -169,7 +206,7 @@ class Test {
                     }
                     break; //End case 3
                 }
-                case 4: //Process request queue
+                case 5: //Process request queue
                 {
                     System.out.println(">>>>> Processing request into schedule list <<<<<<");
                     for (Request r : requestsList) {
@@ -177,25 +214,27 @@ class Test {
                             schedulesList.add(r.getSchedule());
                         }
                     }
+                    //Print schedule list
+
                     break; //End case 4
                 }
-                case 5: //Start a ride
+                case 6: //Start a ride
                 {
                     break;
                 }
-                case 6: //Finish a ride
+                case 7: //Finish a ride
                 {
                     break;
                 }
-                case 7: //Cancel a ride
+                case 8: //Cancel a ride
                 {
                     break;
                 }
-                case 8: //Add Feedback
+                case 9: //Add Feedback
                 {
                     break;
                 }
-                case 9: //Delete user
+                case 10: //Delete user
                 {
                     if (customersList != null && customersList.size() > 0){
                         System.out.println("Enter name of user to delete");

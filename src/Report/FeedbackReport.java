@@ -11,11 +11,14 @@ public class FeedbackReport extends Report {
 
     public FeedbackReport(Feedback f) {
         this.feedback = f;
-
+        _description = "Feedback Report";
     }
 
     public void printReport() {
-
+        System.out.println("\n" + _description);
+        System.out.println("=====================================================================");
+        System.out.println("");
+        System.out.println("=====================================================================");
     }
 
 }
