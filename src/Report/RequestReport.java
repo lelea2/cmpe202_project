@@ -24,16 +24,15 @@ public class RequestReport extends Report {
         System.out.println("End Point:   " + request.getEndPoint().x + "," + request.getEndPoint().y);
         System.out.println("Time:        " + request.getReqTime());
         System.out.println("=====================================================================");
-
-//        if (request.getUser() != null) {
-//            if (request.getUser() instanceof Driver) {
-//                DriverReport driverReport = new DriverReport((Driver)request.getUser());
-//                driverReport.printDriver();
-//            }
-//            if (request.getUser() instanceof Customer) {
-//                CustomerReport driverReport = new CustomerReport((Customer)request.getUser());
-//                driverReport.printCustomer();
-//            }
-//        }
+        if (request.getUser() != null) {
+            if (request.getUser() instanceof Driver) {
+                DriverReport driverReport = new DriverReport((Driver)request.getUser());
+                driverReport.printReport();
+            }
+            if (request.getUser() instanceof Customer) {
+                CustomerReport driverReport = new CustomerReport((Customer)request.getUser());
+                driverReport.printReport();
+            }
+        }
     }
 }

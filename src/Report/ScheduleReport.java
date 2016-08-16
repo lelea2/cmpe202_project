@@ -23,17 +23,17 @@ public class ScheduleReport extends Report {
         Point startPoint = schedule.get_startPoint();
         Point endPoint = schedule.get_endPoint();
         float distance = schedule.get_distance();
-        float price = schedule.get_price();
+        double price = schedule.get_price();
         String state = schedule.get_scheduleState().toString();
 
         System.out.println("=====================================================================");
-        System.out.println("Start time:  " + startTime.toString());
-        System.out.println("End time:    " + finishTime.toString());
+        System.out.println("Start time : " + startTime.toString());
+        System.out.println("End time   : " + finishTime.toString());
         System.out.println("Start Point: " + startPoint.x + "," + startPoint.y);
-        System.out.println("End Point:   " + endPoint.x + "," + endPoint.y);
-        System.out.println("Distance:    " + distance);
-        System.out.format(" Cost:        $%.2f\n",price);
-        System.out.println("Status:      " + state);
+        System.out.println("End Point  : " + endPoint.x + "," + endPoint.y);
+        System.out.println("Distance   : " + distance);
+        System.out.format(" Cost       : $%.2f\n",price);
+        System.out.println("Status     : " + state);
         System.out.println("=====================================================================");
     }
 }
