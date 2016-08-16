@@ -4,10 +4,13 @@ package Payment;
  * Created by kdao on 7/22/16.
  */
 public abstract class Payment {
-    protected float _paymentAmount ;
+    protected double _paymentAmount ;
     protected String _payerName ;
     protected boolean _paymentSucceeded ;
 
+    /**
+     * Function helper proceed to complete a transaction
+     */
     public void completeTransaction() {
         _paymentSucceeded = false;
         while ( !_paymentSucceeded ) {
@@ -21,11 +24,11 @@ public abstract class Payment {
     abstract public void processPayment();
     abstract public void printReceipt();
 
-    public void set_paymentAmount(float amt) {
+    public void set_paymentAmount(double amt) {
         _paymentAmount = amt ;
     }
 
-    public float get_paymentAmount() {
+    public double get_paymentAmount() {
         return _paymentAmount ;
     }
 

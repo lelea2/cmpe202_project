@@ -11,6 +11,6 @@ public class PricingByDistance implements PricingStrategy {
     private final static double DISTANCE = 100;
     @Override
     public double pricing(Customer membership) {
-        return DISTANCE*PRICE_PER_MILE*PricingByMembership.getMemberPrice(membership);
+        return DISTANCE * PRICE_PER_MILE * PricingByMembership.getMemberPrice(membership);
     }
 }

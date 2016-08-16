@@ -18,7 +18,6 @@ import Membership.*;
  */
 abstract public class Schedule {
     protected Request _request ;
-    protected float _price ;
     protected Payment _payment ;
     protected LocalDateTime _startTime ;
     protected LocalDateTime _finishTime ;
@@ -28,7 +27,8 @@ abstract public class Schedule {
     protected VehicleAndDriver _vehicleAndDriver;
     protected ScheduleState _scheduleState ;
     protected ScheduleQueue _scheduleQueue ;
-    protected ArrayList<ScheduleObserver> _observers ;
+    protected ArrayList<ScheduleObserver> _observers;
+    protected double _price ;
 
     public Schedule(Request request, Payment payment) {
         _request = request;
@@ -73,10 +73,6 @@ abstract public class Schedule {
         return _request;
     }
 
-    public float get_price() {
-        return _price;
-    }
-
     public Payment get_payment() {
         return _payment;
     }
@@ -108,6 +104,24 @@ abstract public class Schedule {
     public void set_vehicleAndDriver(VehicleAndDriver _vehicleAndDriver) {
         this._vehicleAndDriver = _vehicleAndDriver;
     }
+
+    /******************************/
+    //Set price
+    public void set_price() {
+        PricingContext pricingContext = new PricingContext();
+        _price = pricingContext.getPrice(this);
+    }
+
+    public double get_price() {
+        return _price;
+    }
+
+    public void payment() {
+        _payment.set_paymentAmount(_price);
+        System.out.format("Final price for service is $%.2f\n", _price);
+        _payment.completeTransaction();
+    }
+    /*****************************/
 
     //End Getter
     /**************************************************************************************/
@@ -143,6 +157,4 @@ abstract public class Schedule {
     abstract public void setDistance();
     abstract public long getDistance();
     abstract public long getTotalTime();
-    abstract public float getPrice();
-
 }

@@ -7,6 +7,7 @@ public class SilverMembershipDecorator extends MembershipDecorator {
 
     public SilverMembershipDecorator(Customer customer) {
         super(customer);
+        _loyaltyStatus = "Silver";
     }
 
     public String checkBenefits() {

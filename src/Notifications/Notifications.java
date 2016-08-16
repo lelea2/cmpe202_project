@@ -7,7 +7,7 @@ package Notifications;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import Membership.Member;
+import Membership.*;
 
 
 public class Notifications {
@@ -112,5 +112,5 @@ public class Notifications {
     private Date _notificationCreateDate;
     private Date _notificationUpdateDate;
     private static final AtomicInteger count = new AtomicInteger(0);
-    private List<Membership.Member> observerList = new LinkedList<Membership.Member>();
+    private List<Member> observerList = new LinkedList<Membership.Member>();
 }

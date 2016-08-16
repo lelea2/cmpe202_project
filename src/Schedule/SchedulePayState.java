@@ -1,6 +1,7 @@
 package Schedule;
 
 import Membership.*;
+import Vehicle.*;
 
 /**
  * Created by kdao on 8/13/16.
@@ -11,7 +12,7 @@ public class SchedulePayState implements ScheduleState {
     public SchedulePayState(Schedule s){
         System.out.println("Schedule in paid state.");
         _schedule = s;
-        freeVehicleState(); //free vehicle state
+        freeVehicle(); //free vehicle state
         updateCustomer();
     }
 
@@ -35,10 +36,15 @@ public class SchedulePayState implements ScheduleState {
         System.out.println("Cannot complete schedule that already paid");
     }
 
-    public void freeVehicleState() {
-
+    //Function to free up vehicle
+    public void freeVehicle() {
+        Vehicle v = _schedule.get_vehicleAndDriver().getVehicle();
+        v.setVehicleState(new VehicleFreeState(v));
+        v.setLocation(_schedule.get_request().getEndPoint());
+        _schedule.get_vehicleAndDriver().getVehicle().getState().free();
     }
 
+    //Function to update customer state
     public void updateCustomer() {
         if (!(_schedule.get_request().getUser() instanceof Driver)){
             ((Customer) _schedule.get_request().getUser()).addRide();

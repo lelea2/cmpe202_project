@@ -13,6 +13,7 @@ public class BasicMembership extends Customer {
         this._email = email;
         this._rides = 0;
         this._mileages = 0;
+        _loyaltyStatus = "Basic";
     }
 
     /*******************************************************************/
@@ -37,7 +38,6 @@ public class BasicMembership extends Customer {
         return this._mileages;
     }
     /*******************************************************************/
-
 
     public String getBenefits() {
         return "Basic customer -- No extra perk!";

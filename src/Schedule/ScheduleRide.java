@@ -45,7 +45,7 @@ public class ScheduleRide extends Schedule {
     }
 
     @Override
-    public float getPrice() {
+    public double get_price() {
         return 0;
     }
 }
