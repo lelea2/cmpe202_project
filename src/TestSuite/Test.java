@@ -26,7 +26,7 @@ class Test {
         ArrayList<Vehicle> vehiclesList = new ArrayList<>();
         ArrayList<Request> requestsList = new ArrayList<>();
         ArrayList<Schedule> schedulesList = new ArrayList<>();
-        ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>;
+        ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>();
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
@@ -218,20 +218,33 @@ class Test {
                             schedulesList.add(r.getSchedule());
                         }
                     }
+                    ScheduleQueue.getQueue().processSchedule();
                     //Print schedule list
-
+                    for (Schedule schedule : schedulesList) {
+                        Report report = new ScheduleReport(schedule);
+                        report.printReport();
+                    }
                     break; //End case 4
                 }
                 case 6: //Start a ride
                 {
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().startSchedule();
+                    }
                     break;
                 }
                 case 7: //Finish a ride
                 {
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().compeleteSchedule();
+                    }
                     break;
                 }
                 case 8: //Cancel a ride
                 {
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().cancelSchedule();
+                    }
                     break;
                 }
                 case 9: //Add Feedback
