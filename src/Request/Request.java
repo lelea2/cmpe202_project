@@ -36,6 +36,7 @@ public class Request {
     }
 
     public void processRequest() {
+        System.out.println("Processing new request....");
         this.getState().goToNextState(); //proceeding pending request, validate for scheduling
     }
 
@@ -66,7 +67,8 @@ public class Request {
      * @param state
      */
     public void setState(RequestState state) {
-        System.out.println(state);
+//        System.out.println("Setting new request state");
+//        System.out.println(state);
         this.state = state;
     }
 

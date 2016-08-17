@@ -46,8 +46,9 @@ public class SchedulingState implements RequestState {
         System.out.println("Request is creating new Service");
         // Set new service with current request, to the current request
         this._request.setSchedule(new ScheduleRide(this._request, payment)); //Create ride, which is extends of Schedule for adding object
-        if(this._request.getSchedule().get_scheduleState().toString().equalsIgnoreCase("approve")) {
-            goToNextState();
+        if(this._request.getSchedule().get_scheduleState().getState().equalsIgnoreCase("approve")) {
+            //goToNextState();
+            System.out.println("Schedule already approved. No need to approve again");
         } else {
             System.out.println("Schedule is created and is queued waiting for resources");
         }
