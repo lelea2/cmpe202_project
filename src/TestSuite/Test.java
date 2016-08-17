@@ -72,11 +72,7 @@ class Test {
                                 break;
                             }
                             //Printing Customer Report
-                            System.out.println(">>>>>>>>>>>>>>>>> Print customer report <<<<<<<<<<<<<<<<<<<<<<");
-                            for (Customer c : customersList) {
-                                Report report = new CustomerReport(c);
-                                report.printReport();
-                            }
+                            System.out.println("-------------------------------------------------------------");
                             break;
                         }
                         case 2: // Create Driver
@@ -95,11 +91,7 @@ class Test {
                             Driver driver = new Driver(name, phone, email, license, insurance);
                             driversList.add(driver);
                             //Printing Driver Report
-                            System.out.println(">>>>>>>>>>>>>>>>> Print driver report <<<<<<<<<<<<<<<<<<<<<<");
-                            for (Driver d : driversList) {
-                                Report report = new DriverReport(d);
-                                report.printReport();
-                            }
+                            System.out.println("-------------------------------------------------------------");
                             break;
                         }
                         default: {
@@ -138,12 +130,7 @@ class Test {
                     v.setLocation((new Point(rand.nextInt(100), rand.nextInt(100))));
                     vehiclesList.add(v);
                     //Printing Vehicle Report
-                    System.out.println(">>>>>>>>>>>>>>>>> Print vehicle report <<<<<<<<<<<<<<<<<<<<<<");
-                    for (Vehicle vehicle : vehiclesList) {
-                        Report report = new VehicleReport(vehicle);
-                        report.printReport();
-                    }
-                    break; //End case 2
+                    System.out.println("-------------------------------------------------------------");
                 }
                 case 3: //Loading mock data, need this if you want to generate multiple request
                 {
@@ -203,11 +190,7 @@ class Test {
                     Request request = new Request(customersList.get(memberIndex - 1), new Point(fromX, fromY), new Point(toX, toY));
                     requestsList.add(request);
                     //Printing Request Report
-                    System.out.println(">>>>>>>>>>>>>>>>> Print request report <<<<<<<<<<<<<<<<<<<<<<");
-                    for (Request req : requestsList) {
-                        Report report = new RequestReport(req);
-                        report.printReport();
-                    }
+                    System.out.println("-------------------------------------------------------------");
                     break; //End case 3
                 }
                 case 5: //Process request queue
@@ -278,15 +261,32 @@ class Test {
                     break;
                 }
             }
+            printOverallReport(customersList, driversList, vehiclesList, schedulesList);
         }
     }
 
     /**
      * Helper function to print overall report
-     * This is to keep track of the overall request and how we geenrate user
+     * This is to keep track of the overall request and how we generate user
      */
-    private void printOverallReport() {
-
+    private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Schedule> schedulesList) {
+        Report rep;
+        for (Customer customer : customersList) {
+            rep = new CustomerReport(customer);
+            rep.printReport();
+        }
+        for (Driver driver : driversList) {
+            rep = new DriverReport(driver);
+            rep.printReport();
+        }
+        for (Vehicle vehicle : vehiclesList) {
+            rep = new VehicleReport(vehicle);
+            rep.printReport();
+        }
+        for (Schedule schedule : schedulesList) {
+            rep = new ScheduleReport(schedule);
+            rep.printReport();
+        }
     }
 
     //Helper function for membership payment registration
