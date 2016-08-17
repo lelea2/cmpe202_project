@@ -28,4 +28,9 @@ public class VehicleFreeState implements VehicleState {
     public void finish() {
         System.out.println("Cannot finish with free vehicle");
     }
+
+    @Override
+    public String toString() {
+        return "free";
+    }
 }

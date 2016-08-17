@@ -22,11 +22,10 @@ public class VehicleAndDriverReport extends Report {
             DriverReport driverReport = new DriverReport(data.getDriver());
             driverReport.printReport();
         }
-        if (data.getVehicle().getState().toString().equalsIgnoreCase("available")) {
-            System.out.println("Availability: Free\n");
-        }
-        else {
-            System.out.println("Availability: Not free\n");
+        if (data.getVehicle().getState().toString().equalsIgnoreCase("free")) { //vehicle state free
+            System.out.println("Vehicle State: Free\n");
+        } else {
+            System.out.println("Vehicle state: Not free\n");
         }
     }
 }

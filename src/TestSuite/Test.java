@@ -29,11 +29,11 @@ class Test {
         ArrayList<Schedule> schedulesList = new ArrayList<>();
         ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>();
         ArrayList<Feedback> feedbackArrayList = new ArrayList<>();
-        ArrayList<VehicleAndDriver> vehicleAndDriverArrayList = new ArrayList<>();
+//        ArrayList<VehicleAndDriver> vehicleAndDriverArrayList = new ArrayList<>();
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
-        DataTest dataTest = new DataTest();
+//        DataTest dataTest = new DataTest();
 
         //By default, generate some default customer and driver & vehicle
         Customer member1 = new BasicMembership("User1", "1234567", "user1@test.com");
@@ -211,12 +211,12 @@ class Test {
                 }
                 case 5: //Start a ride
                 {
-                    if (dataTest.getTest().getActiveVehicleList().size() == 0) {
+                    if (DataTest.getTest().getActiveVehicleList().size() == 0) {
                         System.out.println("No active vehicle available. Cannot start. Please try to load data to generate more vehicle");
                         break;
                     }
-                    System.out.println("Available vehicle #: " + dataTest.getTest().getActiveVehicleList().size());
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                    System.out.println("Available vehicle #: " + DataTest.getTest().getActiveVehicleList().size());
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
                         System.out.println("Start schedule with Driver: " + vd.getDriver().get_name());
                         vd.getDriver().startSchedule();
                     }
@@ -225,7 +225,7 @@ class Test {
                 }
                 case 6: //Finish a ride
                 {
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().compeleteSchedule();
                     }
                     System.out.println("-------------------------------------------------------------");
@@ -234,7 +234,7 @@ class Test {
                 }
                 case 7: //Cancel a ride
                 {
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().cancelSchedule();
                     }
                     System.out.println("-------------------------------------------------------------");
@@ -301,10 +301,15 @@ class Test {
                         if (genAnswer.equalsIgnoreCase("y")) {
                             System.out.println("How many vehicle you want?");
                             int num = input.nextInt();
-                            dataTest.getTest().loadMockData(num);
-                            vehicleAndDriverArrayList = (ArrayList<VehicleAndDriver>)dataTest.getActiveVehicleList();
+                            System.out.println("Option: 1 - Personal owned only, other - personal + companyowned");
+                            int opt = input.nextInt();
+                            if (opt == 1) {
+                                DataTest.getTest().loadMockData(num, false);
+                            } else {
+                                DataTest.getTest().loadMockData(num, true);
+                            }
                         } else {
-                            System.out.println("... Return to main menu");
+                            System.out.println("Please enter valid option, Return to main menu....");
                         }
                         break;
                     } else {
@@ -318,11 +323,10 @@ class Test {
                             VehicleAndDriver vd = new VehicleAndDriver();
                             vd.setDriver(driversList.get(i));
                             vd.setVehicle(vehiclesList.get(i));
-                            dataTest.getTest().addVehicleAndDriver(vd);
-                            vehicleAndDriverArrayList = (ArrayList<VehicleAndDriver>)dataTest.getActiveVehicleList();
+                            DataTest.getTest().addVehicleAndDriver(vd);
                             if (vd.getVehicle().getOwnership().getOwnerName().equalsIgnoreCase("company")) {
                                 //add vehicle for company
-                                dataTest.getTest().addVehicle(vd.getVehicle());
+                                DataTest.getTest().addVehicle(vd.getVehicle());
                             }
                         }
                     }

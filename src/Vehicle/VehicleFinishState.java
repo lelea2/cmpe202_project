@@ -25,5 +25,11 @@ public class VehicleFinishState implements VehicleState {
 
     public void finish() {
         System.out.println("Already finish. Do not need to do anything");
+        //Notify?
+    }
+
+    @Override
+    public String toString() {
+        return "finish";
     }
 }

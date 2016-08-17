@@ -16,7 +16,7 @@ import java.awt.*;
 //Helper test to generate multiple requests at the same time
 public class Multiple_Request_Test {
     public static void main(String[] args) {
-        DataTest.getTest().loadMockData(12);
+        DataTest.getTest().loadMockData(12, false);
         Request req1 = new Request(new BasicMembership("Khanh", "123456789", "test@test.com"),
                 new Point(1, 2), new Point(2, 3));
         Request req2 = new Request(new BasicMembership("Leon", "123456789", "test@test.com"),

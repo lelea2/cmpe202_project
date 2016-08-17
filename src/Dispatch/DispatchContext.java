@@ -17,8 +17,9 @@ public class DispatchContext { //TODO: this could be strategy pattern, for simpl
 
     public VehicleAndDriver dispatch(Request rq) {
         List<VehicleAndDriver> cars = DataTest.getTest().getActiveVehicleList();
+        System.out.println("Dispatch -- Active list size: " + cars.size());
         for (VehicleAndDriver car : cars) {
-            if (car.getVehicle().getState().toString().equalsIgnoreCase("available")) {
+            if (car.getVehicle().getState().toString().equalsIgnoreCase("free")) {
                 System.out.println("Car/Driver:" + car.getVehicle().getVin() + "/" + car.getDriver().get_name());
                 car.getVehicle().getState().schedule(); //Schedule for car
                 return car;

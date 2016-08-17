@@ -46,14 +46,14 @@ public class DataTest {
 
     public VehicleAndDriver getFreeVehicleAndDriver() {
         for (VehicleAndDriver vd : availVehicles) {
-            if (vd.getVehicle().getState().toString().equalsIgnoreCase("available")) {
+            if (vd.getVehicle().getState().toString().equalsIgnoreCase("free")) { //match with free vehicle state
                 return vd;
             }
         }
         return null;
     }
 
-    public void loadMockData(int numTest) {
+    public void loadMockData(int numTest, boolean loadCompany) {
         Random rand = new Random(LocalTime.now().toNanoOfDay());
         System.out.println("Loading drivers/vehicles assets...");
         for (int i = 0; i < numTest; i++) {
@@ -63,14 +63,19 @@ public class DataTest {
             c.setLocation(new Point(rand.nextInt(100), rand.nextInt(100)));
             vd.setVehicle(c);
             DataTest.getTest().addVehicleAndDriver(vd);
+            printReport(vd);
         }
-        for (int j = 0; j < numTest; j++) {
-            VehicleAndDriver vd = new VehicleAndDriver();
-            vd.setDriver(new Driver("Company#" + j, "phone#", "email@", "license#", "insurance#"));
-            Vehicle v = new CompactVehicle("company#" + j, "make-x", "model-x", 2015, new CompanyOwnedVehicle("company#" + j));
-            v.setLocation(new Point(50, 50));// right in the middle
-            vd.setVehicle(v);
-            DataTest.getTest().addVehicleAndDriver(vd);
+        if (loadCompany == true) { //only load company when needed
+            for (int j = 0; j < numTest; j++) {
+                VehicleAndDriver vd = new VehicleAndDriver();
+                vd.setDriver(new Driver("Company#" + j, "phone#", "email@", "license#", "insurance#"));
+                Vehicle v = new CompactVehicle("company#" + j, "make-x", "model-x", 2015, new CompanyOwnedVehicle("company#" + j));
+                v.setLocation(new Point(50, 50));// right in the middle
+                vd.setVehicle(v);
+                DataTest.getTest().addVehicleAndDriver(vd);
+                System.out.println("\n-------------------- #" + (j + 1 ) + ") Company owned vehicle ---------------------");
+                printReport(vd);
+            }
         }
     }
 
@@ -80,6 +85,11 @@ public class DataTest {
 
     public synchronized void addVehicle(Vehicle v) {
         inoperateVehicles.add(v);
+    }
+
+    public void printReport(VehicleAndDriver vd) {
+        VehicleAndDriverReport report = new VehicleAndDriverReport(vd);
+        report.printReport();
     }
 
 }

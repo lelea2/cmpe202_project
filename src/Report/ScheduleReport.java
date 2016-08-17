@@ -27,6 +27,7 @@ public class ScheduleReport extends Report {
         String state = schedule.get_scheduleState().getState();
 
         System.out.println("=====================================================================");
+        System.out.println("\n" + _description);
         System.out.println("Start time : " + startTime.toString());
         System.out.println("End time   : " + finishTime.toString());
         System.out.println("Start Point: " + startPoint.x + "," + startPoint.y);

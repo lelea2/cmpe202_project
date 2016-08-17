@@ -27,4 +27,9 @@ public class VehicleOperatingState implements VehicleState {
         System.out.println("Vehicle is set up to finish. Schedule state aborted");
         _vehicle.setVehicleState(new VehicleFreeState(_vehicle));
     }
+
+    @Override
+    public String toString() {
+        return "operating";
+    }
 }
