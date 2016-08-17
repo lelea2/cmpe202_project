@@ -11,6 +11,7 @@ public class CompletedState implements RequestState {
 
     public CompletedState(Request request) {
         this._request = request;
+        stateAction();
     }
 
     @Override

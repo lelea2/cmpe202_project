@@ -8,6 +8,7 @@ public class CancelledState implements RequestState {
 
     public CancelledState(Request request) {
         this._request = request;
+        stateAction();
     }
 
     @Override

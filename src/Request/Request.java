@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.UUID;
 
 import Membership.Member;
 import Schedule.Schedule;
@@ -31,6 +32,7 @@ public class Request {
         this.user = member;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
+        this.requestId = UUID.randomUUID().toString();
         this.requestRules = new RequestRules(this);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
         dateFormat.format(new Date());

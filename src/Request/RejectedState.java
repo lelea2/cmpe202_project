@@ -8,6 +8,7 @@ public class RejectedState implements RequestState {
 
     public RejectedState(Request request) {
         this._request = request;
+        stateAction();
     }
 
     @Override

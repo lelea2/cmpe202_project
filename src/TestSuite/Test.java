@@ -200,6 +200,7 @@ class Test {
                     System.out.println(">>>>> Processing request into schedule list <<<<<<");
                     for (Request request : requestsList) {
                         if (request.getSchedule() != null) { //Adding request to schedule
+                            System.out.println("Adding schedule to schedule list after approval");
                             schedulesList.add(request.getSchedule());
                         }
                     }
