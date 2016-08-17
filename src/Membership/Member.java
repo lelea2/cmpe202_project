@@ -15,10 +15,6 @@ public abstract class Member {
         return _id;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
     public String get_name() {
         return _name;
     }
@@ -41,6 +37,10 @@ public abstract class Member {
 
     public void set_email(String _email) {
         this._email = _email;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     abstract public void update(Object args);

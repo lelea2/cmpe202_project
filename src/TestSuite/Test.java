@@ -198,17 +198,12 @@ class Test {
                 case 5: //Process request queue
                 {
                     System.out.println(">>>>> Processing request into schedule list <<<<<<");
-                    for (Request r : requestsList) {
-                        if (r.getSchedule() != null) { //Adding request to schedule
-                            schedulesList.add(r.getSchedule());
+                    for (Request request : requestsList) {
+                        if (request.getSchedule() != null) { //Adding request to schedule
+                            schedulesList.add(request.getSchedule());
                         }
                     }
                     ScheduleQueue.getQueue().processSchedule();
-                    //Print schedule list
-                    for (Schedule schedule : schedulesList) {
-                        Report report = new ScheduleReport(schedule);
-                        report.printReport();
-                    }
                     break; //End case 4
                 }
                 case 6: //Start a ride
@@ -284,7 +279,7 @@ class Test {
                     break;
                 }
             }
-            printOverallReport(customersList, driversList, vehiclesList, schedulesList, feedbackArrayList);
+            printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
         }
     }
 
@@ -292,7 +287,7 @@ class Test {
      * Helper function to print overall report
      * This is to keep track of the overall request and how we generate user
      */
-    private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Schedule> schedulesList, ArrayList<Feedback> feedbackList) {
+    private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Request> requestArrayList, ArrayList<Schedule> schedulesList, ArrayList<Feedback> feedbackList) {
         Report report;
         for (Customer customer : customersList) {
             report = new CustomerReport(customer);
@@ -304,6 +299,10 @@ class Test {
         }
         for (Vehicle vehicle : vehiclesList) {
             report = new VehicleReport(vehicle);
+            report.printReport();
+        }
+        for (Request request : requestArrayList) {
+            report = new RequestReport(request);
             report.printReport();
         }
         for (Schedule schedule : schedulesList) {
