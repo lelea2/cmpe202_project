@@ -4,10 +4,7 @@ import Base.DateFormat;
 import Rules.RequestRules;
 
 import java.awt.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.UUID;
 
 import Membership.Member;
@@ -34,10 +31,12 @@ public class Request {
         this.endLocation = endLocation;
         this.requestId = UUID.randomUUID().toString();
         this.requestRules = new RequestRules(this);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-        dateFormat.format(new Date());
         this.time = LocalDateTime.now(); //Time stamp for request staarting
-        this.setState(new PendingState(this));
+        this.state = new PendingState(this);
+    }
+
+    public void processRequest() {
+        this.getState().goToNextState(); //proceeding pending request, validate for scheduling
     }
 
     /**
@@ -66,7 +65,8 @@ public class Request {
      * Set request state
      * @param state
      */
-    public void setState(RequestState state){
+    public void setState(RequestState state) {
+        System.out.println(state);
         this.state = state;
     }
 

@@ -9,4 +9,6 @@ public interface ScheduleState {
     public void pay();
     public void cancel();
 
+    public String getState();
+
 }

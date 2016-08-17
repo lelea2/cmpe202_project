@@ -29,7 +29,7 @@ public class ApprovedState implements RequestState {
             goToNextState();
         } else {
             System.out.println("Rejected scheduling request....");
-            this._request.setState(new RejectedState(this._request));
+            this._request.setState(new CancelledState(this._request));
         }
     }
 

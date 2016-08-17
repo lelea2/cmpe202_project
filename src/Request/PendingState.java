@@ -14,7 +14,7 @@ public class PendingState implements RequestState {
     @Override
     public void stateAction() {
         System.out.println("Request is pending");
-        goToNextState();
+        //goToNextState();
     }
 
     @Override

@@ -34,11 +34,22 @@ class Test {
         Scanner input = new Scanner(System.in);
         DataTest dataTest = new DataTest();
 
+        //By default, generate some default customer and driver & vehicle
+        Customer member1 = new BasicMembership("User1", "1234567", "user1@test.com");
+        Customer member2 = new BasicMembership("User2", "123765", "user2@test.com");
+        Driver driver1 = new Driver("Driver1", "7654321", "driver1@test.com", "license#", "insurance#");
+        Vehicle vehicle1 = new VanVehicle("12345", "Toyota", "Corolla", 2000, new CompanyOwnedVehicle("UberLyftCorp"));
+        customersList.add(member1);
+        customersList.add(member2);
+        vehiclesList.add(vehicle1);
+        driversList.add(driver1);
+        //End adding mock data
+
         System.out.println("/***********************************************************************************************/");
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
-        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Loading data", "Add ride request", "Process request queue",
-                "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User"};
+        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue",
+                "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User", "Loading data"};
         while(true) {
             int choice = getOption("==== Please pick one of the following option for testing ====", mainOptions);
             switch(choice) {
@@ -118,10 +129,19 @@ class Test {
                     System.out.println("What year the Vehicle is made?");
                     int year = Integer.parseInt(input.next());
                     VehicleOwnership ownership;
-                    if (owner_type == 1) {
-                        ownership = new CompanyOwnedVehicle("company");
+                    if (owner_type == 2) {
+                        if (driversList.size() == 0) {
+                            System.out.println("No driver to assign vehicle. Back to main menu");
+                            break;
+                        }
+                        String[] dList = new String[driversList.size()];
+                        for (int i = 0; i < driversList.size(); i++) {
+                            dList[i] = driversList.get(i).get_name();
+                        }
+                        int dIndex = getOption("Which Driver will make this request?", dList);
+                        ownership = new PersonalOwnedVehicle(driversList.get(dIndex).get_name());
                     } else {
-                        ownership = new PersonalOwnedVehicle("personal");
+                        ownership = new CompanyOwnedVehicle("UberLyftCorp");
                     }
                     Random rand = new Random();
                     Vehicle v;
@@ -135,7 +155,120 @@ class Test {
                     //Printing Vehicle Report
                     System.out.println("-------------------------------------------------------------");
                 }
-                case 3: //Loading mock data, need this if you want to generate multiple request
+                case 3: //Add request for a ride
+                {
+                    if (customersList.size() == 0 || driversList.size() == 0) {
+                        System.out.println("The system do not have any existing customer or driver. Create customer and driver first by option #3!");
+                        break;
+                    }
+                    String[] userList = new String[customersList.size()];
+                    for (int i = 0; i < customersList.size(); i++) {
+                        userList[i] = customersList.get(i).get_name();
+                    }
+                    int memberIndex = getOption("Which Customer will make this request?", userList);
+                    System.out.println("Start point - X coordinate:");
+                    int fromX = input.nextInt();
+                    System.out.println("Start point - Y coordinate:");
+                    int fromY = input.nextInt();
+                    System.out.println("Destination point - X coordinate:");
+                    int toX = input.nextInt();
+                    System.out.println("Destination point - Y coordinate:");
+                    int toY = input.nextInt();
+                    Request request = new Request(customersList.get(memberIndex - 1), new Point(fromX, fromY), new Point(toX, toY));
+                    //Process to validating request here
+                    request.processRequest();
+//                    System.out.println(request.getState());
+                    requestsList.add(request);
+                    //Printing Request Report
+                    System.out.println("-------------------------------------------------------------");
+                    break; //End case 3
+                }
+                case 4: //Process request queue
+                {
+                    System.out.println(">>>>> Processing request into schedule list <<<<<<");
+                    if (requestsList.size() == 0) {
+                        System.out.println("No request available. Please generate one in #3");
+                        break;
+                    }
+                    for (Request request : requestsList) {
+                        System.out.println(request.getSchedule());
+                        if (request.getSchedule() != null) { //Adding request to schedule
+                            System.out.println("Adding schedule to schedule list after approval");
+                            schedulesList.add(request.getSchedule());
+                        }
+                    }
+                    ScheduleQueue.getQueue().processSchedule();
+                    break; //End case 4
+                }
+                case 5: //Start a ride
+                {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().startSchedule();
+                    }
+                    break;
+                }
+                case 6: //Finish a ride
+                {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().compeleteSchedule();
+                    }
+                    break;
+                }
+                case 7: //Cancel a ride
+                {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                        vd.getDriver().cancelSchedule();
+                    }
+                    break;
+                }
+                case 8: //Add Feedback
+                {
+                    System.out.println("Feedback type: 1 - For Driver, 2 - For Pricing, 3 - For overall service");
+                    int type = Integer.parseInt(input.next());
+                    System.out.println("Feedback title:");
+                    String title = input.next();
+                    System.out.println("Feedback content:");
+                    String content = input.next();
+                    System.out.println("Rating:");
+                    int rating = Integer.parseInt(input.next());
+                    if (type == 1) { //
+                        DriverFeedback fb = new DriverFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else if (type == 2) {
+                        PricingFeedback fb = new PricingFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else if (type == 3) {
+                        ServiceFeedback fb = new ServiceFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else {
+                        inValidateRequest();
+                        break;
+                    }
+                    break;
+                }
+                case 9: //Delete user
+                {
+                    if (customersList != null && customersList.size() > 0){
+                        System.out.println("Enter name of user to delete");
+                        String name = input.next();
+                        boolean deleted = false;
+                        for (int i=0; i <customersList.size(); i++){
+                            if (customersList.get(i).get_name().equalsIgnoreCase(name)){
+                                System.out.println("Customer with name=" + name + " is deleted.");
+                                customersList.remove(i);
+                                deleted = true;
+                                break;
+                            }
+                        }
+                        if (!deleted){
+                            System.out.println("Customer with name=" + name + " is not found.");
+                        }
+                    } else {
+                        System.out.println("Systems have no customer to delete!");
+                    }
+                    break; //End case 9
+                }
+                case 10: //Loading mock data, need this if you want to generate multiple request
                 {
                     System.out.print(">>>>>>>>>>>>>>> Loading mock data <<<<<<<<<<<<<<<<");
                     if (vehiclesList.size() == 0 && driversList.size() == 0) {
@@ -167,113 +300,7 @@ class Test {
                             }
                         }
                     }
-                    break;
-                }
-                case 4: //Add request for a ride
-                {
-                    if (customersList.size() == 0 || driversList.size() == 0) {
-                        System.out.println("The system do not have any existing customer or driver. Create customer and driver first by option #3!");
-                        break;
-                    }
-                    String[] userList = new String[customersList.size()];
-                    for (int i = 0; i < customersList.size(); i++) {
-                        userList[i] = customersList.get(i).get_name();
-                    }
-                    int memberIndex = getOption("Which Customer will make this request?", userList);
-                    System.out.println("Start point - X coordinate:");
-                    int fromX = input.nextInt();
-                    System.out.println("Start point - Y coordinate:");
-                    int fromY = input.nextInt();
-                    System.out.println("Destination point - X coordinate:");
-                    int toX = input.nextInt();
-                    System.out.println("Destination point - Y coordinate:");
-                    int toY = input.nextInt();
-                    Request request = new Request(customersList.get(memberIndex - 1), new Point(fromX, fromY), new Point(toX, toY));
-                    requestsList.add(request);
-                    //Printing Request Report
-                    System.out.println("-------------------------------------------------------------");
-                    break; //End case 3
-                }
-                case 5: //Process request queue
-                {
-                    System.out.println(">>>>> Processing request into schedule list <<<<<<");
-                    for (Request request : requestsList) {
-                        System.out.println(request.getSchedule());
-                        if (request.getSchedule() != null) { //Adding request to schedule
-                            System.out.println("Adding schedule to schedule list after approval");
-                            schedulesList.add(request.getSchedule());
-                        }
-                    }
-                    ScheduleQueue.getQueue().processSchedule();
-                    break; //End case 4
-                }
-                case 6: //Start a ride
-                {
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
-                        vd.getDriver().startSchedule();
-                    }
-                    break;
-                }
-                case 7: //Finish a ride
-                {
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
-                        vd.getDriver().compeleteSchedule();
-                    }
-                    break;
-                }
-                case 8: //Cancel a ride
-                {
-                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
-                        vd.getDriver().cancelSchedule();
-                    }
-                    break;
-                }
-                case 9: //Add Feedback
-                {
-                    System.out.println("Feedback type: 1 - For Driver, 2 - For Pricing, 3 - For overall service");
-                    int type = Integer.parseInt(input.next());
-                    System.out.println("Feedback title:");
-                    String title = input.next();
-                    System.out.println("Feedback content:");
-                    String content = input.next();
-                    System.out.println("Rating:");
-                    int rating = Integer.parseInt(input.next());
-                    if (type == 1) { //
-                        DriverFeedback fb = new DriverFeedback(title, content, rating);
-                        feedbackArrayList.add(fb);
-                    } else if (type == 2) {
-                        PricingFeedback fb = new PricingFeedback(title, content, rating);
-                        feedbackArrayList.add(fb);
-                    } else if (type == 3) {
-                        ServiceFeedback fb = new ServiceFeedback(title, content, rating);
-                        feedbackArrayList.add(fb);
-                    } else {
-                        inValidateRequest();
-                        break;
-                    }
-                    break;
-                }
-                case 10: //Delete user
-                {
-                    if (customersList != null && customersList.size() > 0){
-                        System.out.println("Enter name of user to delete");
-                        String name = input.next();
-                        boolean deleted = false;
-                        for (int i=0; i <customersList.size(); i++){
-                            if (customersList.get(i).get_name().equalsIgnoreCase(name)){
-                                System.out.println("Customer with name=" + name + " is deleted.");
-                                customersList.remove(i);
-                                deleted = true;
-                                break;
-                            }
-                        }
-                        if (!deleted){
-                            System.out.println("Customer with name=" + name + " is not found.");
-                        }
-                    } else {
-                        System.out.println("Systems have no customer to delete!");
-                    }
-                    break; //End case 9
+                    break; //end case 10
                 }
                 default: {
                     inValidateRequest();

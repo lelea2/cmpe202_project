@@ -16,7 +16,7 @@ public class CancelledState implements RequestState {
 
     @Override
     public void stateAction() {
-        System.out.println("Request is cancelled");
+        System.out.println("Request is cancelled.......");
         goToNextState();
     }
 

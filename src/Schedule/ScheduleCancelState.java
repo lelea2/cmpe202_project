@@ -6,7 +6,7 @@ package Schedule;
 public class ScheduleCancelState implements ScheduleState {
     private Schedule _schedule;
 
-    public ScheduleCancelState(Schedule s){
+    public ScheduleCancelState(Schedule s) {
         System.out.println("Schedule in cancelled state.");
         _schedule = s;
         //Free up schedule and driver
