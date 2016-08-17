@@ -38,13 +38,13 @@ class Test {
         //By default, generate some default customer and driver & vehicle
         Customer member1 = new BasicMembership("User1", "1234567", "user1@test.com");
         Customer member2 = new BasicMembership("User2", "123765", "user2@test.com");
-        Driver driver1 = new Driver("Driver1", "7654321", "driver1@test.com", "license#", "insurance#");
-        Vehicle vehicle1 = new VanVehicle("12345", "Toyota", "Corolla", 2000, new CompanyOwnedVehicle("UberLyftCorp"));
+        //Driver driver1 = new Driver("Driver1", "7654321", "driver1@test.com", "license#", "insurance#");
+        //Vehicle vehicle1 = new VanVehicle("12345", "Toyota", "Corolla", 2000, new CompanyOwnedVehicle("UberLyftCorp"));
         customersList.add(member1);
         customersList.add(member2);
-        vehiclesList.add(vehicle1);
-        driversList.add(driver1);
-        vehicleAndDriverArrayList.add(new VehicleAndDriver(driver1, vehicle1)); //vehicleanddriver array list
+        //vehiclesList.add(vehicle1);
+        //driversList.add(driver1);
+        //vehicleAndDriverArrayList.add(new VehicleAndDriver(driver1, vehicle1)); //vehicleanddriver array list
         //End adding mock data
 
         System.out.println("/***********************************************************************************************/");
@@ -163,7 +163,7 @@ class Test {
                 }
                 case 3: //Add request for a ride
                 {
-                    if (customersList.size() == 0 || driversList.size() == 0) {
+                    if (customersList.size() == 0) {
                         System.out.println("The system do not have any existing customer or driver. Create customer and driver first by option #3!");
                         break;
                     }
@@ -217,6 +217,7 @@ class Test {
                     }
                     System.out.println("Available vehicle #: " + dataTest.getTest().getActiveVehicleList().size());
                     for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
+                        System.out.println("Start schedule with Driver: " + vd.getDriver().get_name());
                         vd.getDriver().startSchedule();
                     }
                     printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);

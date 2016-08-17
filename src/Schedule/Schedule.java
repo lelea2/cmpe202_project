@@ -117,6 +117,9 @@ abstract public class Schedule {
 
     public void set_vehicleAndDriver(VehicleAndDriver _vehicleAndDriver) {
         this._vehicleAndDriver = _vehicleAndDriver;
+        if (_vehicleAndDriver.getDriver() != null){
+            _vehicleAndDriver.getDriver().setSchedule(this); //set schedule for driver
+        }
     }
 
     /******************************/

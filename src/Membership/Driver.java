@@ -1,6 +1,7 @@
 package Membership;
 
 import Schedule.Schedule;
+import Vehicle.VehicleAndDriver;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -14,6 +15,7 @@ public class Driver extends Member {
     //Schedule of driver
     private ArrayList<Schedule> scheduleArrayList;
     private Schedule _schedule;
+    private VehicleAndDriver _vehicleAndDriver;//Assign driver with car
 
     //Constructor
     public Driver(String name, String phoneNumber, String email, String license, String insurance) {
@@ -48,12 +50,14 @@ public class Driver extends Member {
         }
         this._schedule = null;
     }
+
     //End manage schedule for driver
     /******************************************************************************/
 
     /*****************************************************************************/
     //Start driver handling his/her own schedule
     public void startSchedule() {
+        System.out.println("Driver to start schedule...");
         if (_schedule != null ) {
             _schedule.startSchedule();
         }
