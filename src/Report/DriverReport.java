@@ -16,10 +16,11 @@ public class DriverReport extends Report {
 
     public void printReport() {
         System.out.println("=====================================================================");
-        System.out.println("Name:       " + driver.get_name());
-        System.out.println("Phone#:     " + driver.get_phoneNumber());
-        System.out.println("License:    " + driver.get_license());
-        System.out.println("Insurance:  " + driver.get_insurance());
+        System.out.println("Id       : " + driver.get_id());
+        System.out.println("Name     : " + driver.get_name());
+        System.out.println("Phone#   : " + driver.get_phoneNumber());
+        System.out.println("License  : " + driver.get_license());
+        System.out.println("Insurance: " + driver.get_insurance());
         System.out.println("=====================================================================");
     }
 }

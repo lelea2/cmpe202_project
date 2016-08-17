@@ -58,7 +58,7 @@ public class DataTest {
         System.out.println("Loading drivers/vehicles assets...");
         for (int i = 0; i < numTest; i++) {
             VehicleAndDriver vd = new VehicleAndDriver();
-            vd.setDriver(new Driver("driver#" + i, "phone#", "email@", "lic#", "insur#"));
+            vd.setDriver(new Driver("driver#" + i, "phone#", "email@", "license#", "insurance#"));
             CompactVehicle c = new CompactVehicle("vin#" + i, "make-x", "model-x", 2016, new PersonalOwnedVehicle("driver#" + i));
             c.setLocation(new Point(rand.nextInt(100), rand.nextInt(100)));
             vd.setVehicle(c);
@@ -67,7 +67,7 @@ public class DataTest {
         }
         for (int j = 0; j < numTest; j++) {
             VehicleAndDriver vd = new VehicleAndDriver();
-            vd.setDriver(new Driver("Company#" + j, "phone#", "email@", "lic#", "insur#"));
+            vd.setDriver(new Driver("Company#" + j, "phone#", "email@", "license#", "insurance#"));
             Vehicle v = new CompactVehicle("company#" + j, "make-x", "model-x", 2015, new CompanyOwnedVehicle("company#" + j));
             v.setLocation(new Point(50, 50));// right in the middle
             vd.setVehicle(v);

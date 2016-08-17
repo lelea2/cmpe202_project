@@ -1,5 +1,7 @@
 package Membership;
 
+import java.util.UUID;
+
 /**
  * Created by kdao on 7/25/16.
  */
@@ -11,6 +13,7 @@ public class BasicMembership extends Customer {
         this._name = name;
         this._phoneNumber = phoneNumber;
         this._email = email;
+        this._id = UUID.randomUUID().toString();
         this._rides = 0;
         this._mileages = 0;
         _loyaltyStatus = "Basic";

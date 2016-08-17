@@ -137,8 +137,8 @@ class Test {
                 case 3: //Loading mock data, need this if you want to generate multiple request
                 {
                     System.out.print(">>>>>>>>>>>>>>> Loading mock data <<<<<<<<<<<<<<<<");
-                    if (vehiclesList.size() == 0 && driversList.size() == 0) {
-                        System.out.println("No Vehicles & Drive. Auto-generate data? (Y/N)");
+                    if (vehiclesList.size() == 0 || driversList.size() == 0) {
+                        System.out.println("No Vehicles & Drivers. Auto-generate data? (Y/N)");
                         String genAnswer = input.next();
                         if (genAnswer.equalsIgnoreCase("y")) {
                             System.out.println("How many vehicle you want?");

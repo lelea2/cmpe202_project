@@ -17,6 +17,7 @@ public class CustomerReport extends Report {
     public void printReport() {
         System.out.println("\n" + _description);
         System.out.println("=====================================================================");
+        System.out.println("Id            : " + customer.get_id());
         System.out.println("Name          : " + customer.get_name());
         System.out.println("Phone#        : " + customer.get_phoneNumber());
         System.out.println("Total Rides   : " + customer.get_rides());

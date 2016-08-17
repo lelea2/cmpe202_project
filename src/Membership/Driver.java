@@ -3,6 +3,7 @@ package Membership;
 import Schedule.Schedule;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by kdao on 7/22/16.
@@ -20,6 +21,7 @@ public class Driver extends Member {
         this._name = name;
         this._phoneNumber = phoneNumber;
         this._email = email;
+        this._id = UUID.randomUUID().toString();
         this._license = license;
         this._insurance = insurance;
     }
