@@ -10,7 +10,7 @@ public class SilverMembershipDecorator extends MembershipDecorator {
         _loyaltyStatus = "Silver";
     }
 
-    public String checkBenefits() {
+    public String getBenefits() {
         return "*** Silver Member ***: Get $10 giftcard with every $200 spent";
     }
 }

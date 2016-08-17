@@ -281,6 +281,14 @@ class Test {
         }
     }
 
+    /**
+     * Helper function to print overall report
+     * This is to keep track of the overall request and how we geenrate user
+     */
+    private void printOverallReport() {
+
+    }
+
     //Helper function for membership payment registration
     private static CreditCardPayment payMembership(String name) {
         System.out.println("------- Loyalty Program: Register payment method ----------");
