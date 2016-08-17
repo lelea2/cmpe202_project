@@ -9,6 +9,11 @@ public class ScheduleCancelState implements ScheduleState {
     public ScheduleCancelState(Schedule s){
         System.out.println("Schedule in cancelled state.");
         _schedule = s;
+        //Free up schedule and driver
+        if (_schedule._vehicleAndDriver != null) {
+            _schedule.get_vehicleAndDriver().getDriver().cancelSchedule();
+            _schedule.get_vehicleAndDriver().getVehicle().getState().free();
+        }
     }
 
     public void queuing() {
