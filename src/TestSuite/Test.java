@@ -138,7 +138,7 @@ class Test {
                 case 3: //Loading mock data, need this if you want to generate multiple request
                 {
                     System.out.print(">>>>>>>>>>>>>>> Loading mock data <<<<<<<<<<<<<<<<");
-                    if (vehiclesList.size() == 0 || driversList.size() == 0) {
+                    if (vehiclesList.size() == 0 && driversList.size() == 0) {
                         System.out.println("No Vehicles & Drivers. Auto-generate data? (Y/N)");
                         String genAnswer = input.next();
                         if (genAnswer.equalsIgnoreCase("y")) {
@@ -151,9 +151,9 @@ class Test {
                         break;
                     } else {
                         int size = 0;
-                        if (vehiclesList.size() < driversList.size()) {
+                        if (vehiclesList.size() < driversList.size()) { //mock data, set vehicle for existing driver
                             size = vehiclesList.size();
-                        } else {
+                        } else { //mock data, set vehicle owned by company (no specific driver);
                             size = driversList.size();
                         }
                         for (int i = 0; i < size; i++) {
@@ -162,10 +162,8 @@ class Test {
                             vd.setVehicle(vehiclesList.get(i));
                             dataTest.getTest().addVehicleAndDriver(vd);
                             if (vd.getVehicle().getOwnership().getOwnerName().equalsIgnoreCase("company")) {
+                                //add vehicle for company
                                 dataTest.getTest().addVehicle(vd.getVehicle());
-                                dataTest.getTest().printAddCompanyOwnedInventory(vd);
-                            } else {
-                                dataTest.getTest().printAddPersonalOwnedInventory(vd);
                             }
                         }
                     }
@@ -174,7 +172,7 @@ class Test {
                 case 4: //Add request for a ride
                 {
                     if (customersList.size() == 0 || driversList.size() == 0) {
-                        System.out.println("The system do not have any existing customer or driver. Create customer and driver first!");
+                        System.out.println("The system do not have any existing customer or driver. Create customer and driver first by option #3!");
                         break;
                     }
                     String[] userList = new String[customersList.size()];
@@ -200,6 +198,7 @@ class Test {
                 {
                     System.out.println(">>>>> Processing request into schedule list <<<<<<");
                     for (Request request : requestsList) {
+                        System.out.println(request.getSchedule());
                         if (request.getSchedule() != null) { //Adding request to schedule
                             System.out.println("Adding schedule to schedule list after approval");
                             schedulesList.add(request.getSchedule());
@@ -291,29 +290,59 @@ class Test {
      */
     private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Request> requestArrayList, ArrayList<Schedule> schedulesList, ArrayList<Feedback> feedbackList) {
         Report report;
-        for (Customer customer : customersList) {
-            report = new CustomerReport(customer);
-            report.printReport();
+        if (customersList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Customer customer : customersList) {
+                report = new CustomerReport(customer);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
-        for (Driver driver : driversList) {
-            report = new DriverReport(driver);
-            report.printReport();
+        if (driversList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Driver driver : driversList) {
+                report = new DriverReport(driver);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
-        for (Vehicle vehicle : vehiclesList) {
-            report = new VehicleReport(vehicle);
-            report.printReport();
+        if (vehiclesList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Vehicle vehicle : vehiclesList) {
+                report = new VehicleReport(vehicle);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
-        for (Request request : requestArrayList) {
-            report = new RequestReport(request);
-            report.printReport();
+        if (requestArrayList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Request request : requestArrayList) {
+                report = new RequestReport(request);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
-        for (Schedule schedule : schedulesList) {
-            report = new ScheduleReport(schedule);
-            report.printReport();
+        if (schedulesList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Schedule schedule : schedulesList) {
+                report = new ScheduleReport(schedule);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
-        for (Feedback fb : feedbackList) {
-            report = new FeedbackReport(fb);
-            report.printReport();
+        if (feedbackList.size() > 0) {
+            System.out.println("***************************************************************\n");
+            for (Feedback fb : feedbackList) {
+                report = new FeedbackReport(fb);
+                report.printReport();
+            }
+            System.out.println("***************************************************************\n");
+            System.out.println();
         }
     }
 

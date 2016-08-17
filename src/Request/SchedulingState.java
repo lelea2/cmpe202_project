@@ -13,6 +13,7 @@ public class SchedulingState implements RequestState {
 
     public SchedulingState(Request request) {
         this._request = request;
+        stateAction();
     }
 
     @Override
@@ -53,6 +54,7 @@ public class SchedulingState implements RequestState {
         this._request.setState(new CompletedState(this._request));
     }
 
+    @Override
     public String getDescription() {
         return "Scheduling...";
     }

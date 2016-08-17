@@ -22,6 +22,7 @@ public class RejectedState implements RequestState {
         //Notify for rejected state
     }
 
+    @Override
     public String getDescription() {
         return "Rejected";
     }

@@ -39,6 +39,7 @@ public class ApprovedState implements RequestState {
         this._request.setState(new SchedulingState(this._request));
     }
 
+    @Override
     public String getDescription() {
         return "Approved";
     }

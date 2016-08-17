@@ -18,8 +18,8 @@ public class ScheduleReport extends Report {
     }
 
     public void printReport() {
-        LocalDateTime startTime = schedule.get_startTime();
-        LocalDateTime finishTime = schedule.get_finishTime();
+        String startTime = schedule.get_startTime();
+        String finishTime = schedule.get_finishTime();
         Point startPoint = schedule.get_startPoint();
         Point endPoint = schedule.get_endPoint();
         float distance = schedule.get_distance();

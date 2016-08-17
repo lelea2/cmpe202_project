@@ -28,6 +28,7 @@ public class CancelledState implements RequestState {
         notifications.sendNotification(); //complete state and send notification
     }
 
+    @Override
     public String getDescription() {
         return "cancelled";
     }

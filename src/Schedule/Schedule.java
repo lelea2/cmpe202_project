@@ -77,12 +77,26 @@ abstract public class Schedule {
         return _payment;
     }
 
-    public LocalDateTime get_startTime() {
-        return _startTime;
+    //Helper function to get start time
+    public String get_startTime() {
+        if (_startTime != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = _startTime.format(formatter);
+            return formattedDateTime;
+        } else {
+            return "Not started";
+        }
     }
 
-    public LocalDateTime get_finishTime() {
-        return _finishTime;
+    //Helper function to get finish time
+    public String get_finishTime() {
+        if (_finishTime != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = _finishTime.format(formatter);
+            return formattedDateTime;
+        } else {
+            return "Not finished";
+        }
     }
 
     public Point get_startPoint() {

@@ -24,7 +24,8 @@ public class PendingState implements RequestState {
         this._request.requestRules.validateRequest();
     }
 
+    @Override
     public String getDescription() {
-        return "Pending";
+        return "Pending...";
     }
 }

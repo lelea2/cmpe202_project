@@ -23,11 +23,13 @@ public class CompletedState implements RequestState {
     @Override
     public void goToNextState() {
         //Notify
+        System.out.println("Finish request, done scheduling. Now generate notification...");
         notifications = new Notifications(1, "Your request has been approved", "Complete request");
         notifications.addObserver(_request.getUser());
         notifications.sendNotification(); //complete state and send notification
     }
 
+    @Override
     public String getDescription() {
         return "Completed";
     }
