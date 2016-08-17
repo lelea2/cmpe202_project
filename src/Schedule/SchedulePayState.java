@@ -41,7 +41,7 @@ public class SchedulePayState implements ScheduleState {
 
     //Function to find parking spot
     public void findParkingSpot() {
-
+        //Calling parking here
     }
 
     //Function to free up vehicle

@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 
-import Dispatch.DataTest;
-import Report.ScheduleReport;
-import Dispatch.DispatchContext;
-import Vehicle.VehicleAndDriver;
+import Report.*;
+import Dispatch.*;
+import Vehicle.*;
 import Membership.*;
-import Vehicle.VehicleScheduledState;
 
 /**
  * Created by kdao on 8/13/16.
@@ -42,6 +40,7 @@ public class ScheduleQueue {
      * @param schedule
      */
     public void addSchedule(Schedule schedule) {
+        System.out.println("Add schedule to schedule queue..........");
         LocalDateTime now = LocalDateTime.now(); //java8 date time
         LocalDateTime reqTime = null;
         try {
@@ -88,12 +87,15 @@ public class ScheduleQueue {
         _scheduleQueue.remove(s);
     }
 
+    //Process schedule queue
     public void processSchedule() {
         VehicleAndDriver vehicleAndDriver;
         Schedule schedule;
         while (_scheduleQueue.size() != 0) {
-            schedule = _scheduleQueue.getFirst();
-            vehicleAndDriver = _dispatcher.dispatch(schedule.get_request()); //call dispatch schedle
+            System.out.println("Process schedule queue...............");
+            schedule = _scheduleQueue.getFirst(); //get first in queue
+            vehicleAndDriver = _dispatcher.dispatch(schedule.get_request()); //call dispatch schedule
+            System.out.println(vehicleAndDriver);
             if (vehicleAndDriver != null) {
                 System.out.println("Name of Driver is " + vehicleAndDriver.getDriver().get_name());
                 vehicleAndDriver.getVehicle().setVehicleState(new VehicleScheduledState(vehicleAndDriver.getVehicle()));

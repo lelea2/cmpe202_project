@@ -89,6 +89,7 @@ class Test {
                             }
                             //Printing Customer Report
                             System.out.println("-------------------------------------------------------------");
+                            printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                             break;
                         }
                         case 2: // Create Driver
@@ -108,6 +109,7 @@ class Test {
                             driversList.add(driver);
                             //Printing Driver Report
                             System.out.println("-------------------------------------------------------------");
+                            printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                             break;
                         }
                         default: {
@@ -156,6 +158,8 @@ class Test {
                     vehiclesList.add(v);
                     //Printing Vehicle Report
                     System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
+                    break; //end case2
                 }
                 case 3: //Add request for a ride
                 {
@@ -183,6 +187,7 @@ class Test {
                     requestsList.add(request);
                     //Printing Request Report
                     System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break; //End case 3
                 }
                 case 4: //Process request queue
@@ -200,16 +205,21 @@ class Test {
                         }
                     }
                     ScheduleQueue.getQueue().processSchedule();
+                    System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break; //End case 4
                 }
                 case 5: //Start a ride
                 {
                     if (dataTest.getTest().getActiveVehicleList().size() == 0) {
-                        System.out.println("");
+                        System.out.println("No active vehicle available. Cannot start. Please try to load data to generate more vehicle");
+                        break;
                     }
+                    System.out.println("Available vehicle #: " + dataTest.getTest().getActiveVehicleList().size());
                     for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().startSchedule();
                     }
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break;
                 }
                 case 6: //Finish a ride
@@ -217,6 +227,8 @@ class Test {
                     for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().compeleteSchedule();
                     }
+                    System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break;
                 }
                 case 7: //Cancel a ride
@@ -224,6 +236,8 @@ class Test {
                     for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().cancelSchedule();
                     }
+                    System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break;
                 }
                 case 8: //Add Feedback
@@ -249,6 +263,8 @@ class Test {
                         inValidateRequest();
                         break;
                     }
+                    System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break;
                 }
                 case 9: //Delete user
@@ -271,6 +287,8 @@ class Test {
                     } else {
                         System.out.println("Systems have no customer to delete!");
                     }
+                    System.out.println("-------------------------------------------------------------");
+                    printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
                     break; //End case 9
                 }
                 case 10: //Loading mock data, need this if you want to generate multiple request
@@ -314,7 +332,6 @@ class Test {
                     break;
                 }
             }
-            printOverallReport(customersList, driversList, vehiclesList, requestsList, schedulesList, feedbackArrayList);
         }
     }
 
