@@ -42,7 +42,6 @@ public class SchedulingState implements RequestState {
                 System.out.println("Invalid input, please try again, value must be either 1 or 2");
             }
         }
-
         System.out.println("Request is creating new Service");
         // Set new service with current request, to the current request
         this._request.setSchedule(new ScheduleRide(this._request, payment)); //Create ride, which is extends of Schedule for adding object

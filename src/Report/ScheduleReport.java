@@ -24,7 +24,7 @@ public class ScheduleReport extends Report {
         Point endPoint = schedule.get_endPoint();
         float distance = schedule.get_distance();
         double price = schedule.get_price();
-        String state = schedule.get_scheduleState().toString();
+        String state = schedule.get_scheduleState().getState();
 
         System.out.println("=====================================================================");
         System.out.println("Start time : " + startTime.toString());

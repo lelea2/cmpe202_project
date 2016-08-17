@@ -29,6 +29,7 @@ class Test {
         ArrayList<Schedule> schedulesList = new ArrayList<>();
         ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>();
         ArrayList<Feedback> feedbackArrayList = new ArrayList<>();
+        ArrayList<VehicleAndDriver> vehicleAndDriverArrayList = new ArrayList<>();
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
@@ -43,12 +44,13 @@ class Test {
         customersList.add(member2);
         vehiclesList.add(vehicle1);
         driversList.add(driver1);
+        vehicleAndDriverArrayList.add(new VehicleAndDriver(driver1, vehicle1)); //vehicleanddriver array list
         //End adding mock data
 
         System.out.println("/***********************************************************************************************/");
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
-        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue",
+        String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue(Loading complete request to schedule)",
                 "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User", "Loading data"};
         while(true) {
             int choice = getOption("==== Please pick one of the following option for testing ====", mainOptions);
@@ -202,6 +204,9 @@ class Test {
                 }
                 case 5: //Start a ride
                 {
+                    if (dataTest.getTest().getActiveVehicleList().size() == 0) {
+                        System.out.println("");
+                    }
                     for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().startSchedule();
                     }
@@ -278,6 +283,7 @@ class Test {
                             System.out.println("How many vehicle you want?");
                             int num = input.nextInt();
                             dataTest.getTest().loadMockData(num);
+                            vehicleAndDriverArrayList = (ArrayList<VehicleAndDriver>)dataTest.getActiveVehicleList();
                         } else {
                             System.out.println("... Return to main menu");
                         }
@@ -294,6 +300,7 @@ class Test {
                             vd.setDriver(driversList.get(i));
                             vd.setVehicle(vehiclesList.get(i));
                             dataTest.getTest().addVehicleAndDriver(vd);
+                            vehicleAndDriverArrayList = (ArrayList<VehicleAndDriver>)dataTest.getActiveVehicleList();
                             if (vd.getVehicle().getOwnership().getOwnerName().equalsIgnoreCase("company")) {
                                 //add vehicle for company
                                 dataTest.getTest().addVehicle(vd.getVehicle());
