@@ -10,6 +10,7 @@ import Membership.*;
 import Request.*;
 import Report.*;
 import Dispatch.*;
+import Feedback.*;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -27,6 +28,7 @@ class Test {
         ArrayList<Request> requestsList = new ArrayList<>();
         ArrayList<Schedule> schedulesList = new ArrayList<>();
         ArrayList<PaymentAndCustomer> paymentAndCustomers = new ArrayList<>();
+        ArrayList<Feedback> feedbackArrayList = new ArrayList<>();
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
@@ -232,6 +234,27 @@ class Test {
                 }
                 case 9: //Add Feedback
                 {
+                    System.out.println("Feedback type: 1 - For Driver, 2 - For Pricing, 3 - For overall service");
+                    int type = Integer.parseInt(input.next());
+                    System.out.println("Feedback title:");
+                    String title = input.next();
+                    System.out.println("Feedback content:");
+                    String content = input.next();
+                    System.out.println("Rating:");
+                    int rating = Integer.parseInt(input.next());
+                    if (type == 1) { //
+                        DriverFeedback fb = new DriverFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else if (type == 2) {
+                        PricingFeedback fb = new PricingFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else if (type == 3) {
+                        ServiceFeedback fb = new ServiceFeedback(title, content, rating);
+                        feedbackArrayList.add(fb);
+                    } else {
+                        inValidateRequest();
+                        break;
+                    }
                     break;
                 }
                 case 10: //Delete user
@@ -261,7 +284,7 @@ class Test {
                     break;
                 }
             }
-            printOverallReport(customersList, driversList, vehiclesList, schedulesList);
+            printOverallReport(customersList, driversList, vehiclesList, schedulesList, feedbackArrayList);
         }
     }
 
@@ -269,23 +292,27 @@ class Test {
      * Helper function to print overall report
      * This is to keep track of the overall request and how we generate user
      */
-    private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Schedule> schedulesList) {
-        Report rep;
+    private static void printOverallReport(ArrayList<Customer> customersList, ArrayList<Driver> driversList, ArrayList<Vehicle> vehiclesList, ArrayList<Schedule> schedulesList, ArrayList<Feedback> feedbackList) {
+        Report report;
         for (Customer customer : customersList) {
-            rep = new CustomerReport(customer);
-            rep.printReport();
+            report = new CustomerReport(customer);
+            report.printReport();
         }
         for (Driver driver : driversList) {
-            rep = new DriverReport(driver);
-            rep.printReport();
+            report = new DriverReport(driver);
+            report.printReport();
         }
         for (Vehicle vehicle : vehiclesList) {
-            rep = new VehicleReport(vehicle);
-            rep.printReport();
+            report = new VehicleReport(vehicle);
+            report.printReport();
         }
         for (Schedule schedule : schedulesList) {
-            rep = new ScheduleReport(schedule);
-            rep.printReport();
+            report = new ScheduleReport(schedule);
+            report.printReport();
+        }
+        for (Feedback fb : feedbackList) {
+            report = new FeedbackReport(fb);
+            report.printReport();
         }
     }
 
