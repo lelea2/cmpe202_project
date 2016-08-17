@@ -86,14 +86,14 @@ public class DataTest {
 
     public void printAddPersonalOwnedInventory(VehicleAndDriver vd) {
         VehicleAndDriverReport vehicleAndDriverReport = new VehicleAndDriverReport(vd);
-        System.out.println("Add driver owned inventory:");
+        System.out.println("******************** Add company owned vehicles *****************************");
         reportList.add(vehicleAndDriverReport);
         vehicleAndDriverReport.printReport();
     }
 
     public void printAddCompanyOwnedInventory(VehicleAndDriver vd) {
         VehicleAndDriverReport vehicleAndDriverReport = new VehicleAndDriverReport(vd);
-        System.out.println("Add company owned inventory:");
+        System.out.println("******************** Add company owned vehicles *****************************");
         reportList.add(vehicleAndDriverReport);
         vehicleAndDriverReport.printReport();
     }
