@@ -19,7 +19,7 @@ public class DataTest {
     private static ArrayList<Vehicle> inoperateVehicles = null;
     private static ArrayList<VehicleAndDriverReport> reportList;
 
-    private DataTest() {
+    public DataTest() {
         availVehicles = new ArrayList<VehicleAndDriver>();
         inoperateVehicles = new ArrayList<Vehicle>();
         reportList = new ArrayList<VehicleAndDriverReport>();

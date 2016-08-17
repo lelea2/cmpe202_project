@@ -48,9 +48,8 @@ public class SchedulingState implements RequestState {
         if(this._request.getSchedule().get_scheduleState().toString().equalsIgnoreCase("approve")) {
             goToNextState();
         } else {
-            System.out.println("Service was created and is queued waiting for resources");
+            System.out.println("Schedule is created and is queued waiting for resources");
         }
-        this._request.setState(new ApprovedState(this._request));
         this._request.setState(new CompletedState(this._request));
     }
 

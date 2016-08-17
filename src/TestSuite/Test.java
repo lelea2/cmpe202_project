@@ -32,6 +32,7 @@ class Test {
         //End definition for data store registration
         /************************/
         Scanner input = new Scanner(System.in);
+        DataTest dataTest = new DataTest();
 
         System.out.println("/***********************************************************************************************/");
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
@@ -143,7 +144,7 @@ class Test {
                         if (genAnswer.equalsIgnoreCase("y")) {
                             System.out.println("How many vehicle you want?");
                             int num = input.nextInt();
-                            DataTest.getTest().loadMockData(num);
+                            dataTest.getTest().loadMockData(num);
                         } else {
                             System.out.println("... Return to main menu");
                         }
@@ -159,12 +160,12 @@ class Test {
                             VehicleAndDriver vd = new VehicleAndDriver();
                             vd.setDriver(driversList.get(i));
                             vd.setVehicle(vehiclesList.get(i));
-                            DataTest.getTest().addVehicleAndDriver(vd);
+                            dataTest.getTest().addVehicleAndDriver(vd);
                             if (vd.getVehicle().getOwnership().getOwnerName().equalsIgnoreCase("company")) {
-                                DataTest.getTest().addVehicle(vd.getVehicle());
-                                DataTest.getTest().printAddCompanyOwnedInventory(vd);
+                                dataTest.getTest().addVehicle(vd.getVehicle());
+                                dataTest.getTest().printAddCompanyOwnedInventory(vd);
                             } else {
-                                DataTest.getTest().printAddPersonalOwnedInventory(vd);
+                                dataTest.getTest().printAddPersonalOwnedInventory(vd);
                             }
                         }
                     }
@@ -209,21 +210,21 @@ class Test {
                 }
                 case 6: //Start a ride
                 {
-                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().startSchedule();
                     }
                     break;
                 }
                 case 7: //Finish a ride
                 {
-                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().compeleteSchedule();
                     }
                     break;
                 }
                 case 8: //Cancel a ride
                 {
-                    for (VehicleAndDriver vd : DataTest.getTest().getActiveVehicleList()) {
+                    for (VehicleAndDriver vd : dataTest.getTest().getActiveVehicleList()) {
                         vd.getDriver().cancelSchedule();
                     }
                     break;
