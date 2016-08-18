@@ -25,6 +25,7 @@ public class DataTest {
         reportList = new ArrayList<VehicleAndDriverReport>();
     }
 
+    //To keep data maintained, synchronized
     public static synchronized DataTest getTest() {
         if (test == null) {
             test = new DataTest();

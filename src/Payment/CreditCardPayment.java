@@ -33,5 +33,6 @@ public class CreditCardPayment extends Payment {
 
     @Override
     public void printReceipt() {
+        System.out.format("Paid $%.2f\n", _paymentAmount);
     }
 }

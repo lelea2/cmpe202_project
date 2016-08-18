@@ -17,7 +17,9 @@ public class FeedbackReport extends Report {
     public void printReport() {
         System.out.println("\n" + _description);
         System.out.println("=====================================================================");
-        System.out.println("");
+        System.out.println("Title  : " + feedback.getName());
+        System.out.println("Content: " + feedback.getContent());
+        System.out.println("Rating : " + feedback.getRating());
         System.out.println("=====================================================================");
     }
 
