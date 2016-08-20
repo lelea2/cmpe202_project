@@ -9,38 +9,33 @@ import Schedule.Schedule;
 public class PricingContext {
     protected PricingStrategy pricingStrategy;
 
-    //int traffic_status;//0(good traffic),1(bad traffic),2(Rain day)
+    //Default constructor
+    public PricingContext() {}
 
-    public double processPricing(int traffic_status, Customer membership) {
-        PricingStrategy pricingStrategy = setPricingStrategy(traffic_status);
-        return pricingStrategy.pricing(membership);
-    }
-
-    public PricingStrategy setPricingStrategy(int traffic_status) {
-        if((traffic_status == 0)) {
-            pricingStrategy = new PricingByDistance();
-        } else if(traffic_status == 1) {
-            pricingStrategy = new PricingByTime();
-        } else if(traffic_status == 2) { //TODO: right now schedule does not have weather, set up later
-            pricingStrategy = new PricingByWeather();
-        }
-        return pricingStrategy;
-    }
-
-    public double getPrice(Schedule schedule) {
-        double price;
-        int strategy  = 1; //By default set by time
-        if (schedule.getDistance() > schedule.getTotalTime() / 2) {
-            strategy = 0; //Get distance
-        }
-        pricingStrategy = setPricingStrategy(strategy);
-        Member user = schedule.get_request().getUser();
-        if (user instanceof Customer) {
-            price = pricingStrategy.pricing((Customer) schedule.get_request().getUser());
-        } else {
-            price = 0.0; //If driver then don't charge
-        }
+    public double getPrice(Schedule _schedule) {
+        double price ;
+        pricingStrategy = setPricingStrategy(_schedule) ;
+        price = pricingStrategy.getPricing(_schedule);
         return price;
+    }
+
+    public PricingStrategy setPricingStrategy(Schedule schedule) {
+        String currStrategy = "Time";
+        if (schedule.getDistance() > schedule.getTotalTime()/2) { //set current by Distance
+            currStrategy = "Distance";
+        }
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("Pricing strategy setting, distance=" + schedule.getDistance() + "; totalTime=" + schedule.getTotalTime());
+        System.out.println("Strategy used: " + currStrategy);
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+        if (currStrategy.equals("Time")) {
+            return new PricingByTime();
+        } else if (currStrategy.equals("Weather")) { //TODO: check for weather, right now we don't maintain this logic in schedule object
+            return new PricingByWeather();
+        } else { //Default PricingStrategy is Distance
+            return new PricingByDistance();
+        }
     }
 
 }

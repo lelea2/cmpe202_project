@@ -1,11 +1,12 @@
 package Pricing;
 
 
-import Membership.Customer;
+import Membership.*;
+import Schedule.*;
 
 /**
  * Created by kdao on 7/22/16.
  */
 public interface PricingStrategy {
-    public double pricing(Customer customer);
+    public double getPricing(Schedule s);
 }

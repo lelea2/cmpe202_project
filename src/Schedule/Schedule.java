@@ -27,6 +27,7 @@ abstract public class Schedule {
     protected VehicleAndDriver _vehicleAndDriver;
     protected ScheduleState _scheduleState ;
     protected ScheduleQueue _scheduleQueue ;
+    protected Member _customer;
     protected ArrayList<ScheduleObserver> _observers;
     protected double _price ;
 
@@ -39,6 +40,7 @@ abstract public class Schedule {
         _price = 0;
         _startPoint = _request.getStartPoint();
         _endPoint = _request.getEndPoint();
+        _customer = _request.getUser();
     }
 
     /*****************************************************************************/

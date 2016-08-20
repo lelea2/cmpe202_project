@@ -8,8 +8,7 @@ import java.util.ArrayList;
  */
 
 public class Parking {
-    private int totalSlotNumber;
-    private int availableSlotNumber;
+    private int totalSlotNumber = 10; //Hard code total number of parking slot for now
     private boolean[] parkingSlots;
 
     public Parking(int totalSlotNumber) {
@@ -27,11 +26,7 @@ public class Parking {
         return arr;
     }
 
-    public int getAvailableSlotNumber() {
-        return this.availableSlotNumber;
-    }
-
-    public boolean enterParkingSlot(int slot){
+    public boolean enterParkingSlot(int slot) {
         if (slot < 0 || slot >= this.totalSlotNumber || this.parkingSlots[slot]){
             return false;
         }

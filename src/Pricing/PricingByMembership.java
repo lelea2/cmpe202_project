@@ -7,13 +7,14 @@ import Membership.Customer;
  */
 public class PricingByMembership {
 
+    //Pricing by membership
     private final static String GOLD = "Gold";
     private final static String SILVER = "Silver";
 
     public static double getMemberPrice(Customer membership) {
         if(membership.getLoyaltyStatus() == GOLD){
             return 0.6;
-        }else if(membership.getLoyaltyStatus() == SILVER){
+        } else if(membership.getLoyaltyStatus() == SILVER) {
             return 0.8;
         }
         //for normal user, no discount.

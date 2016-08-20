@@ -9,7 +9,7 @@ public class PaymentReport extends Report {
     private Payment payment;
     private String type;
 
-    public PaymentReport(Payment payment, String type){
+    public PaymentReport(Payment payment, String type) {
         this.payment = payment;
         this.type = type;
         set_description("Payment Report");
