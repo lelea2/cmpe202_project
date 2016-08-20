@@ -9,10 +9,11 @@ import Schedule.*;
 public class PricingByDistance implements PricingStrategy {
 
     private final static double PRICE_PER_MILE = 1.0;
-    private final static double DISTANCE = 100;
+//    private final static double DISTANCE = 100;
 
     @Override
     public double getPricing(Schedule s) {
-        return DISTANCE * PRICE_PER_MILE * PricingByMembership.getMemberPrice((Customer)s.get_request().getUser());
+        System.out.println("Time Pricing $1.0/minute");
+        return s.getDistance() * PRICE_PER_MILE * PricingByMembership.getMemberPrice((Customer)s.get_request().getUser());
     }
 }

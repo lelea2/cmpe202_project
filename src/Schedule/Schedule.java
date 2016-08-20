@@ -129,6 +129,7 @@ abstract public class Schedule {
     public void set_price() {
         PricingContext pricingContext = new PricingContext();
         _price = pricingContext.getPrice(this);
+        System.out.println("------------------------ Set final price: $" + _price + " ----------------------------");
     }
 
     public double get_price() {

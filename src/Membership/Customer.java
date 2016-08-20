@@ -14,6 +14,7 @@ public abstract class Customer extends Member {
 
     public void addRide() {
         this._rides += 1;
+        System.out.println(">>>>>> Customer add ride, totalRides=" + this._rides);
     }
 
     public int get_rides() {
@@ -22,6 +23,7 @@ public abstract class Customer extends Member {
 
     public void addMileages(long miles) {
         this._mileages += miles;
+        System.out.println(">>>>>> Customer add " + miles + "miles, totalMileages=" + this._mileages);
     }
 
     public long get_mileages() {

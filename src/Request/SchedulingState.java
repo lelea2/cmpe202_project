@@ -31,9 +31,9 @@ public class SchedulingState implements RequestState {
             System.out.println("Pay for service: 1 - Credit Card, 2 - Cash");
             try {
                 paymentType = Integer.parseInt(scan.next());
-                if (paymentType == 1) {
+                if (paymentType == 2) { //Cash payment
                     payment = new CashPayment(_request.getUser().get_name());
-                } else if (paymentType == 2) {
+                } else if (paymentType == 1) { //Credit card payment
                     payment = new CreditCardPayment(_request.getUser().get_name());
                 } else {
                     System.out.println("Invalid input, please try again, value must be either 1 or 2");
