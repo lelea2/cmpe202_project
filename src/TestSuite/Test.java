@@ -133,7 +133,7 @@ class Test {
                     System.out.println("What year the Vehicle is made?");
                     int year = Integer.parseInt(input.next());
                     VehicleOwnership ownership;
-                    if (owner_type == 2) {
+                    if (owner_type == 1) { //company owned
                         if (driversList.size() == 0) {
                             System.out.println("No driver to assign vehicle. Back to main menu");
                             break;
