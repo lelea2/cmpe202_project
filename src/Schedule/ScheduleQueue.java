@@ -103,7 +103,7 @@ public class ScheduleQueue {
                 schedule.queuingSchedule(); //put schedule in queing state
                 removeSchedule(schedule);
             } else {
-                break;
+                break; //do not do anything if nothing lefted in scheudule
             }
         }
     }
