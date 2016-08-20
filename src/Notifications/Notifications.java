@@ -7,8 +7,9 @@ package Notifications;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import Membership.*;
+import Schedule.*;
 
-public class Notifications {
+public class Notifications implements ScheduleObserver {
 
     public Notifications(int notificationType, String notificationContent, String notificationTitle) {
         this._notificationType = notificationType;
@@ -108,4 +109,8 @@ public class Notifications {
     private Date _notificationUpdateDate;
     private static final AtomicInteger count = new AtomicInteger(0);
     private List<Member> observerList = new LinkedList<Membership.Member>();
+
+    public void update (Schedule s, Object args) {
+        //Implement for schedule observer here
+    }
 }
