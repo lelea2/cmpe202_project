@@ -70,10 +70,13 @@ public class SchedulePayState implements ScheduleState {
 
     //Function to update customer state
     public void updateCustomer() {
-        if ((_schedule.get_request().getUser() instanceof Customer)) {
-            System.out.println(">>>>>>>>>> Update customer <<<<<<<<<<<<<<<<<<");
+        if (_schedule.get_request().getUser() instanceof Customer) {
+            System.out.println(">>>>>>>>>> Update customer's ride <<<<<<<<<<<<<<<<<<");
             ((Customer) _schedule.get_request().getUser()).addRide();
             ((Customer) _schedule.get_request().getUser()).addMileages(_schedule.getDistance());
+            System.out.println(">>>>>>>>>>>>>>> Result <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println("Total Ride: " + ((Customer) _schedule.get_request().getUser()).get_rides());
+            System.out.println("Total Mileages: " + ((Customer) _schedule.get_request().getUser()).get_mileages());
         }
     }
 

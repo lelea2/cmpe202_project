@@ -25,7 +25,7 @@ public class BasicMembership extends Customer {
         this._rides += 1;
     }
 
-    public int getRides() {
+    public int get_rides() {
         return this._rides;
     }
     /*******************************************************************/
@@ -37,7 +37,7 @@ public class BasicMembership extends Customer {
         this._mileages += miles;
     }
 
-    public long getMileages() {
+    public long get_mileages() {
         return this._mileages;
     }
     /*******************************************************************/

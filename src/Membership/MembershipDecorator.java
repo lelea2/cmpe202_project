@@ -36,7 +36,7 @@ public abstract class MembershipDecorator extends Customer {
 
     /*******************************************************************/
     //Handle member rides
-    public int getRides() {
+    public int get_rides() {
         return _customer.get_rides();
     }
     public void addRide() {
@@ -47,7 +47,7 @@ public abstract class MembershipDecorator extends Customer {
 
     /*******************************************************************/
     //Handle member mileages
-    public long getMileages() {
+    public long get_mileages() {
         return _customer.get_mileages();
     }
     public void addMileages(long miles) {
