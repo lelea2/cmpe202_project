@@ -51,7 +51,7 @@ class Test {
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
         String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue(Loading complete request to schedule)",
-                "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User", "Loading data"};
+                "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User", "Loading data (Please run this once before add request to make sure you have inventory)"};
         while(true) {
             int choice = getOption("==== Please pick one of the following option for testing ====", mainOptions);
             switch(choice) {

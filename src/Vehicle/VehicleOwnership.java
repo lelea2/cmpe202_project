@@ -3,10 +3,10 @@ package Vehicle;
 /**
  * Created by kdao on 7/22/16.
  */
-public class VehicleOwnership {
+public abstract class VehicleOwnership {
     protected String ownerName;
 
-    public VehicleOwnership(String name){
+     public VehicleOwnership(String name) {
         ownerName = name;
     }
     public String getOwnerName(){
