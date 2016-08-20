@@ -8,13 +8,23 @@ import java.util.ArrayList;
  */
 
 public class Parking {
+    private static Parking data = null;
     private int totalSlotNumber = 10; //Hard code total number of parking slot for now
     private boolean[] parkingSlots;
 
-    public Parking(int totalSlotNumber) {
+    public Parking() {
         this.totalSlotNumber = totalSlotNumber;
         this.parkingSlots = new boolean[totalSlotNumber];
     }
+
+    //To keep data maintained, synchronized
+    public static synchronized Parking load() {
+        if (data == null) {
+            data = new Parking();
+        }
+        return data;
+    }
+
 
     public ArrayList<Integer> getAvailableSlots() {
         ArrayList<Integer> arr = new ArrayList<>();

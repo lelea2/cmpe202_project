@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class SchedulePayState implements ScheduleState {
     private Schedule _schedule;
-    private Parking parking = new Parking(10);
+    private Parking parking = new Parking();
     private ArrayList<Integer> avalList = parking.getAvailableSlots();
 
     public SchedulePayState(Schedule s) {
@@ -45,6 +45,7 @@ public class SchedulePayState implements ScheduleState {
     //Function to find parking spot
     public void findParkingSpot() {
         //Calling parking here
+        parking = parking.load();
         System.out.println(">>>>>>>>>>>>>>>>>>>> Pick available parking spot <<<<<<<<<<<<<<<<<");
         avalList = parking.getAvailableSlots();
         for (int i = 0; i < avalList.size(); i++) {
