@@ -129,7 +129,7 @@ abstract public class Schedule {
     public void set_price() {
         PricingContext pricingContext = new PricingContext();
         _price = pricingContext.getPrice(this);
-        System.out.println("------------------------ Set final price: $" + _price + " ----------------------------");
+        System.out.println("------------------------ Set final price for the ride: $" + _price + " ----------------------------");
     }
 
     public double get_price() {
@@ -138,7 +138,7 @@ abstract public class Schedule {
 
     public void payment() {
         _payment.set_paymentAmount(_price);
-        System.out.format("Final price for service is $%.2f\n", _price);
+        System.out.format("******************** Final price for this ride is $%.2f\n", _price);
         _payment.completeTransaction();
     }
     /*****************************/

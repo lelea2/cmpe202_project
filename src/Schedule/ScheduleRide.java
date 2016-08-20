@@ -43,9 +43,4 @@ public class ScheduleRide extends Schedule {
         Instant endI = _finishTime.toInstant(ZoneOffset.UTC);
         return Duration.between(startI, endI).toMinutes();
     }
-
-    @Override
-    public double get_price() {
-        return 0;
-    }
 }
