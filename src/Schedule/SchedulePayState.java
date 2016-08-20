@@ -1,6 +1,8 @@
 package Schedule;
 
+import Feedback.*;
 import Membership.*;
+import Report.*;
 import Vehicle.*;
 import Parking.*;
 
@@ -13,6 +15,7 @@ public class SchedulePayState implements ScheduleState {
     private Schedule _schedule;
     private Parking parking = new Parking();
     private ArrayList<Integer> avalList = parking.getAvailableSlots();
+    Scanner input = new Scanner(System.in);
 
     public SchedulePayState(Schedule s) {
         System.out.println("Schedule in paid state.");
@@ -47,6 +50,38 @@ public class SchedulePayState implements ScheduleState {
     //Function to generate feedback
     public void generateFeedback() {
         //TODO: adding feebdback class here
+        System.out.println("Please leave your feedback: (Y/N)");
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase("y")) {
+            Report report;
+            Feedback fb = null;
+            System.out.println("Feedback type: 1 - For Driver, 2 - For Pricing, 3 - For overall service");
+            int type = Integer.parseInt(input.nextLine());
+            System.out.println("Feedback title:");
+            String title = input.nextLine();
+            System.out.println("Feedback Content:");
+            String content = input.nextLine();
+            System.out.println("Feedback Rating:");
+            int rating = Integer.parseInt(input.nextLine());
+            if (type == 1) { //
+                fb = new DriverFeedback(title, content, rating);
+                fb.provideFeedback();
+            } else if (type == 2) {
+                fb = new PricingFeedback(title, content, rating);
+                fb.provideFeedback();
+            } else if (type == 3) {
+                fb = new ServiceFeedback(title, content, rating);
+                fb.provideFeedback();
+            } else {
+                System.out.print("Not a valid option");
+            }
+            if (fb != null) { //Generate feebback report here
+                report = new FeedbackReport(fb);
+                report.printReport();
+            }
+        } else {
+            System.out.println("Thank you, no feedback this time");
+        }
     }
 
     //Function to find parking spot
