@@ -10,7 +10,11 @@ public class ServiceFeedback extends Feedback {
     }
 
     public void setType(){
-        System.out.println("This is a service feedback.");
+        System.out.println("***** This is a service feedback.");
+    }
+
+    public String getType() {
+        return "Service";
     }
 
 }

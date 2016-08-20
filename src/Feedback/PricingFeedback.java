@@ -9,6 +9,10 @@ public class PricingFeedback extends Feedback {
     }
 
     public void setType(){
-        System.out.println("This is a pricing feedback.");
+        System.out.println("***** This is a pricing feedback.");
+    }
+
+    public String getType() {
+        return "Pricing";
     }
 }

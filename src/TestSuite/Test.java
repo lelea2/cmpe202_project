@@ -63,13 +63,13 @@ class Test {
                         {
                             System.out.println(">>>>>>>>>>>>>>>>>>> Register as a customer <<<<<<<<<<<<<<<<<<");
                             System.out.println("Please enter Name:");
-                            String name = input.next();
+                            String name = input.nextLine();
                             System.out.println("Please enter Phone Number:");
-                            String phone = input.next();
+                            String phone = input.nextLine();
                             System.out.println("Please enter email:");
-                            String email = input.next();
+                            String email = input.nextLine();
                             System.out.println("Choose membership: 1 - Basic, 2 - Silver, 3 - Gold:");
-                            int loyal_type = Integer.parseInt(input.next());
+                            int loyal_type = Integer.parseInt(input.nextLine());
                             Customer member = new BasicMembership(name, phone, email);
                             if (loyal_type == 1) {
                                 customersList.add(member);
@@ -96,15 +96,15 @@ class Test {
                         {
                             System.out.println(">>>>>>>>>>>>>>>>>>> Register as a driver <<<<<<<<<<<<<<<<<<");
                             System.out.println("Please enter Name:");
-                            String name = input.next();
+                            String name = input.nextLine();
                             System.out.println("Please enter Phone Number:");
-                            String phone = input.next();
+                            String phone = input.nextLine();
                             System.out.println("Please enter email:");
-                            String email = input.next();
+                            String email = input.nextLine();
                             System.out.println("Please enter license#:");
-                            String license = input.next();
+                            String license = input.nextLine();
                             System.out.println("Please enter insurance#:");
-                            String insurance = input.next();
+                            String insurance = input.nextLine();
                             Driver driver = new Driver(name, phone, email, license, insurance);
                             driversList.add(driver);
                             //Printing Driver Report
@@ -121,17 +121,17 @@ class Test {
                 case 2: // Create Vehicle
                 {
                     System.out.println("Enter 1 - personal owned, 2 - company owned");
-                    int owner_type = Integer.parseInt(input.next());
+                    int owner_type = Integer.parseInt(input.nextLine());
                     System.out.println("Vehicle Type: 1 - Compact, 2- Van");
-                    int vehicle_type = Integer.parseInt(input.next());
+                    int vehicle_type = Integer.parseInt(input.nextLine());
                     System.out.println("Enter vin number");
-                    String vin = input.next();
+                    String vin = input.nextLine();
                     System.out.println("What is the Vehicle Make?");
-                    String make = input.next();
+                    String make = input.nextLine();
                     System.out.println("What is the Vehicle Model?");
-                    String model = input.next();
+                    String model = input.nextLine();
                     System.out.println("What year the Vehicle is made?");
-                    int year = Integer.parseInt(input.next());
+                    int year = Integer.parseInt(input.nextLine());
                     VehicleOwnership ownership;
                     if (owner_type == 1) { //company owned
                         if (driversList.size() == 0) {
@@ -244,21 +244,24 @@ class Test {
                 case 8: //Add Feedback
                 {
                     System.out.println("Feedback type: 1 - For Driver, 2 - For Pricing, 3 - For overall service");
-                    int type = Integer.parseInt(input.next());
+                    int type = Integer.parseInt(input.nextLine());
                     System.out.println("Feedback title:");
-                    String title = input.next();
-                    System.out.println("Feedback content:");
-                    String content = input.next();
-                    System.out.println("Rating:");
-                    int rating = Integer.parseInt(input.next());
+                    String title = input.nextLine();
+                    System.out.println("Feedback Content:");
+                    String content = input.nextLine();
+                    System.out.println("Feedback Rating:");
+                    int rating = Integer.parseInt(input.nextLine());
                     if (type == 1) { //
                         DriverFeedback fb = new DriverFeedback(title, content, rating);
+                        fb.provideFeedback();
                         feedbackArrayList.add(fb);
                     } else if (type == 2) {
                         PricingFeedback fb = new PricingFeedback(title, content, rating);
+                        fb.provideFeedback();
                         feedbackArrayList.add(fb);
                     } else if (type == 3) {
                         ServiceFeedback fb = new ServiceFeedback(title, content, rating);
+                        fb.provideFeedback();
                         feedbackArrayList.add(fb);
                     } else {
                         inValidateRequest();

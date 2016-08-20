@@ -9,6 +9,10 @@ public class DriverFeedback extends Feedback {
     }
 
     public void setType(){
-        System.out.println("This is a customer's feedback.");
+        System.out.println("***** This is a customer's feedback.");
+    }
+
+    public String getType() {
+        return "Driver";
     }
 }
