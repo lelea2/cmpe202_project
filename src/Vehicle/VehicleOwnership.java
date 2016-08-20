@@ -6,7 +6,7 @@ package Vehicle;
 public abstract class VehicleOwnership {
     protected String ownerName;
 
-     public VehicleOwnership(String name) {
+    public VehicleOwnership(String name) {
         ownerName = name;
     }
     public String getOwnerName(){
