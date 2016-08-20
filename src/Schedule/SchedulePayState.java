@@ -20,6 +20,8 @@ public class SchedulePayState implements ScheduleState {
         findParkingSpot();
         freeVehicle(); //free vehicle state
         updateCustomer();
+        //TODO: asking for feedback here
+        generateFeedback();
     }
 
     public void queuing() {
@@ -40,6 +42,11 @@ public class SchedulePayState implements ScheduleState {
     }
     public void cancel() {
         System.out.println("Cannot complete schedule that already paid");
+    }
+
+    //Function to generate feedback
+    public void generateFeedback() {
+        //TODO: adding feebdback class here
     }
 
     //Function to find parking spot
