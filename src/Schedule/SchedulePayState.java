@@ -49,7 +49,7 @@ public class SchedulePayState implements ScheduleState {
         System.out.println(">>>>>>>>>>>>>>>>>>>> Pick available parking spot <<<<<<<<<<<<<<<<<");
         avalList = parking.getAvailableSlots();
         for (int i = 0; i < avalList.size(); i++) {
-            System.out.print((i + 1) + " - ");
+            System.out.print(avalList.get(i) + " - ");
         }
         Scanner input = new Scanner(System.in);
         int choice = Integer.parseInt(input.next());
