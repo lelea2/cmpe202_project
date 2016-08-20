@@ -50,6 +50,8 @@ class Test {
         System.out.println("/***********************************************************************************************/");
         System.out.println("/***************************** CARPOOL & PARKING SERVICE ***************************************/");
         System.out.println("/***********************************************************************************************/");
+        System.out.println("///Note///");
+        System.out.println("************ To generate inventory, which is required before adding request, please run #10 **********");
         String[] mainOptions = {"Register member in the system", "Create Vehicle", "Add ride request", "Process request queue(Loading complete request to schedule)",
                 "Start a ride", "Finish a ride", "Cancel a ride", "Add feedback", "Delete User", "Loading data (Please run this once before add request to make sure you have inventory)"};
         while(true) {
