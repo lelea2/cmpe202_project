@@ -8,16 +8,16 @@ public class VehicleFreeState implements VehicleState {
     protected Vehicle _vehicle;
 
     public VehicleFreeState(Vehicle vehicle) {
-        System.out.println("This vehicle  is available for service.");
+//        System.out.println("This vehicle is available for service.");
         _vehicle = vehicle;
     }
 
     public void free() {
-        System.out.println("This vehicle is available for service.");
+        System.out.println("This vehicle vin=" + _vehicle.getVin() + " is available for service.");
     }
 
     public void schedule() {
-        System.out.println("Vehicle is being scheduled for service.");
+        System.out.println("Vehicle vin=" + _vehicle.getVin() + " is being scheduled for service.");
         _vehicle.setVehicleState(new VehicleScheduledState(_vehicle));
     }
 

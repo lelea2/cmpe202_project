@@ -5,8 +5,8 @@ package Membership;
  */
 public abstract class Customer extends Member {
     protected String _loyaltyStatus;
-    private int _rides;
-    private long _mileages;
+    private int _rides = 0;
+    private long _mileages = 0;
 
     public String getLoyaltyStatus() {
         return _loyaltyStatus;

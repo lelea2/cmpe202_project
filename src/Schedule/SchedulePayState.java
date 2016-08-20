@@ -48,7 +48,7 @@ public class SchedulePayState implements ScheduleState {
         System.out.println(">>>>>>>>>>>>>>>>>>>> Pick available parking spot <<<<<<<<<<<<<<<<<");
         avalList = parking.getAvailableSlots();
         for (int i = 0; i < avalList.size(); i++) {
-            System.out.print(i + " - ");
+            System.out.print((i + 1) + " - ");
         }
         Scanner input = new Scanner(System.in);
         int choice = Integer.parseInt(input.next());
@@ -70,8 +70,8 @@ public class SchedulePayState implements ScheduleState {
 
     //Function to update customer state
     public void updateCustomer() {
-        System.out.println(">>>>>>>>>> Update customer <<<<<<<<<<<<<<<<<<");
-        if (!(_schedule.get_request().getUser() instanceof Driver)){
+        if ((_schedule.get_request().getUser() instanceof Customer)) {
+            System.out.println(">>>>>>>>>> Update customer <<<<<<<<<<<<<<<<<<");
             ((Customer) _schedule.get_request().getUser()).addRide();
             ((Customer) _schedule.get_request().getUser()).addMileages(_schedule.getDistance());
         }
